@@ -18,4 +18,26 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
     }
+
+    /**
+     * @Route("/login", name="login")
+     */
+    public function loginAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/login.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        ]);
+    }
+
+    /**
+     * @Route("/lockscreen", name="lockscreen")
+     */
+    public function lockscreenAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/lockscreen.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        ]);
+    }
 }
