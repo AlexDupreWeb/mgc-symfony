@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Page Header
+                <small>Optional description</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <strong><i class="fa fa-calendar margin-r-5"></i> Ajouté le</strong>
+                    <p class="text-muted">{$user->getCreatedDate()}</a></p>
+                    <hr>
+
+                    <strong><i class="fa fa-building margin-r-5"></i> {$txt_lg->translate('company')|ucfirst}</strong>
+                    <p class="text-muted">{if $user->getCompanyName()}{$user->getCompanyName()}{else}{$txt_lg->translate('unknown2')|ucfirst}{/if}</a></p>
+                    <hr>
+
+                    <strong><i class="fa fa-pencil margin-r-5"></i> {$txt_lg->translate('skills')|ucfirst}</strong>
+                    <p>
+                        <span class="label label-danger">UI Design</span>
+                        <span class="label label-success">Coding</span>
+                        <span class="label label-info">Javascript</span>
+                        <span class="label label-warning">PHP</span>
+                        <span class="label label-primary">Node.js</span>
+                    </p>
+                    <hr>
+
+                    <strong><i class="fa fa-file-text-o margin-r-5"></i> {$txt_lg->translate('notes')|ucfirst}</strong>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="info-box bg-blue">
+                                                <span class="info-box-icon">
+                                                    <i class="fa fa-facebook"></i>
+                                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text"> Facebook</span>
+                                    <span class="progress-description"> 20% Increase in 30 Days </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="info-box bg-aqua">
+                                                <span class="info-box-icon">
+                                                    <i class="fa fa-twitter"></i>
+                                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text"> Twitter</span>
+                                    <span class="progress-description"> 20% Increase in 30 Days </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="info-box bg-red">
+                                                <span class="info-box-icon">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text"> Google +</span>
+                                    <span class="progress-description"> 20% Increase in 30 Days </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="info-box bg-gray">
+                                                <span class="info-box-icon">
+                                                    <i class="fa fa-github"></i>
+                                                </span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text"> Github</span>
+                                    <span class="progress-description"> 20% Increase in 30 Days </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+{% endblock %}
