@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/mod-admin-users/")
+     * @Route("/admin/users/", name="admin-mod-user-list")
      */
     public function indexAction()
     {
@@ -16,7 +16,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/add/")
+     * @Route("/admin/users/add/", name="admin-mod-user-add")
      */
     public function addAction()
     {
@@ -24,7 +24,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/design/{id}", requirements={"id": "\d+"})
+     * @Route("/admin/users/design/{id}", requirements={"id": "\d+"})
      */
     public function designAction($id)
     {
@@ -32,7 +32,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/edit/{id}", requirements={"id": "\d+"})
+     * @Route("/admin/users/edit/{id}", requirements={"id": "\d+"})
      */
     public function editAction($id)
     {
@@ -40,7 +40,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/gadgets/{id}", requirements={"id": "\d+"})
+     * @Route("/admin/users/gadgets/{id}", requirements={"id": "\d+"})
      */
     public function gadgetsAction($id)
     {
@@ -48,7 +48,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/infos/{id}", requirements={"id": "\d+"})
+     * @Route("/admin/users/infos/{id}", requirements={"id": "\d+"})
      */
     public function infosAction($id)
     {
@@ -56,7 +56,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/permissions/{id}", requirements={"id": "\d+"})
+     * @Route("/admin/users/permissions/{id}", requirements={"id": "\d+"})
      */
     public function permissionsAction($id)
     {
@@ -64,7 +64,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/sessions/{id}", requirements={"id": "\d+"})
+     * @Route("/admin/users/sessions/{id}", requirements={"id": "\d+"})
      */
     public function sessionsAction($id)
     {
@@ -72,7 +72,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/shortcuts/{id}", requirements={"id": "\d+"})
+     * @Route("/admin/users/shortcuts/{id}", requirements={"id": "\d+"})
      */
     public function shortcutsAction($id)
     {
@@ -80,7 +80,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/stats/{id}", requirements={"id": "\d+"})
+     * @Route("/admin/users/stats/{id}", requirements={"id": "\d+"})
      */
     public function statsAction($id)
     {
@@ -88,7 +88,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-admin-users/timeline/{id}", requirements={"id": "\d+"})
+     * @Route("/admin/users/timeline/{id}", requirements={"id": "\d+"})
      */
     public function timelineAction($id)
     {
