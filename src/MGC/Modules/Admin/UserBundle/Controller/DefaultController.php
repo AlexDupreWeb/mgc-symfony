@@ -1,6 +1,6 @@
 <?php
 
-namespace MGC\Modules\UserAdminBundle\Controller;
+namespace MGC\Modules\Admin\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -12,7 +12,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('UserAdminBundle:Default:index.html.twig');
+        return $this->render('UserBundle:Default:index.html.twig');
     }
 
     /**
@@ -20,7 +20,7 @@ class DefaultController extends Controller
      */
     public function addAction()
     {
-        return $this->render('UserAdminBundle:Default:add.html.twig');
+        return $this->render('UserBundle:Default:add.html.twig');
     }
 
     /**
@@ -28,7 +28,7 @@ class DefaultController extends Controller
      */
     public function designAction($id)
     {
-        return $this->render('UserAdminBundle:Default:design.html.twig');
+        return $this->render('UserBundle:Default:design.html.twig');
     }
 
     /**
@@ -36,7 +36,7 @@ class DefaultController extends Controller
      */
     public function editAction($id)
     {
-        return $this->render('UserAdminBundle:Default:edit.html.twig');
+        return $this->render('UserBundle:Default:edit.html.twig');
     }
 
     /**
@@ -44,7 +44,7 @@ class DefaultController extends Controller
      */
     public function gadgetsAction($id)
     {
-        return $this->render('UserAdminBundle:Default:gadgets.html.twig');
+        return $this->render('UserBundle:Default:gadgets.html.twig');
     }
 
     /**
@@ -52,7 +52,7 @@ class DefaultController extends Controller
      */
     public function infosAction($id)
     {
-        return $this->render('UserAdminBundle:Default:infos.html.twig');
+        return $this->render('UserBundle:Default:infos.html.twig');
     }
 
     /**
@@ -60,7 +60,7 @@ class DefaultController extends Controller
      */
     public function permissionsAction($id)
     {
-        return $this->render('UserAdminBundle:Default:permissions.html.twig');
+        return $this->render('UserBundle:Default:permissions.html.twig');
     }
 
     /**
@@ -68,7 +68,7 @@ class DefaultController extends Controller
      */
     public function sessionsAction($id)
     {
-        return $this->render('UserAdminBundle:Default:sessions.html.twig');
+        return $this->render('UserBundle:Default:sessions.html.twig');
     }
 
     /**
@@ -76,7 +76,7 @@ class DefaultController extends Controller
      */
     public function shortcutsAction($id)
     {
-        return $this->render('UserAdminBundle:Default:shortcuts.html.twig');
+        return $this->render('UserBundle:Default:shortcuts.html.twig');
     }
 
     /**
@@ -84,7 +84,7 @@ class DefaultController extends Controller
      */
     public function statsAction($id)
     {
-        return $this->render('UserAdminBundle:Default:stats.html.twig');
+        return $this->render('UserBundle:Default:stats.html.twig');
     }
 
     /**
@@ -92,6 +92,6 @@ class DefaultController extends Controller
      */
     public function timelineAction($id)
     {
-        return $this->render('UserAdminBundle:Default:timeline.html.twig');
+        return $this->render('UserBundle:Default:timeline.html.twig');
     }
 }

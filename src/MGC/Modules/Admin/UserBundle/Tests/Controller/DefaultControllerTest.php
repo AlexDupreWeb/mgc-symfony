@@ -1,6 +1,6 @@
 <?php
 
-namespace MGC\Modules\UserAdminBundle\Tests\Controller;
+namespace MGC\Modules\Admin\UserBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

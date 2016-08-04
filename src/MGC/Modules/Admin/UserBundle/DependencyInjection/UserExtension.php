@@ -1,6 +1,6 @@
 <?php
 
-namespace MGC\Modules\UserAdminBundle\DependencyInjection;
+namespace MGC\Modules\Admin\UserBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * @link http://symfony.com/doc/current/cookbook/bundles/extension.html
  */
-class UserAdminExtension extends Extension
+class UserExtension extends Extension
 {
     /**
      * {@inheritdoc}

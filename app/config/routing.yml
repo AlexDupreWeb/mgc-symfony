@@ -1,5 +1,5 @@
-user_admin:
-    resource: "@UserAdminBundle/Controller/"
+user:
+    resource: "@UserBundle/Controller/"
     type:     annotation
     prefix:   /
 
