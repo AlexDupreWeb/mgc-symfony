@@ -1,0 +1,10 @@
+.box.box-solid.box-black > .box-header {
+    background-color: #111;
+    color: #fff;
+}
+.box.box-solid.box-black {
+    border: 1px solid #111;
+}
+.box.box-solid.box-black > .box-header .btn-box-tool{
+    color: #fff;
+}
