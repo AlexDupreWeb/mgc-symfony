@@ -155,9 +155,8 @@
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu">
                                                         <li><a href="{{ url('admin-mgc-users') }}edit/{{ user.id }}"><i class="fa fa-pencil"></i> Modifier</a></li>
+                                                        <li><a href="{{ url('admin-mgc-users') }}infos/{{ user.id }}"><i class="fa fa-user"></i> Informations</a></li>
                                                         <li><a href="{{ url('admin-mgc-users') }}permissions/{{ user.id }}"><i class="fa fa-list-alt"></i> Droits</a></li>
-                                                        <li><a href="{{ url('admin-mgc-users') }}gadgets/{{ user.id }}"><i class="fa fa-puzzle-piece"></i> Modules</a></li>
-                                                        <li><a href="{{ url('admin-mgc-users') }}#"><i class="fa fa-lock"></i> Mot de passe</a></li>
                                                         <li class="divider"></li>
                                                         <li><a href="{{ url('admin-mgc-users') }}#"><i class="fa fa-trash"></i> Supprimer</a></li>
                                                     </ul>
