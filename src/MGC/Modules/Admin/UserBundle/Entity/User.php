@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="mgc4_2_user")
  * @ORM\Entity(repositoryClass="MGC\Modules\Admin\UserBundle\Repository\UserRepository")
  */
 class User
@@ -108,7 +108,7 @@ class User
     /**
      * @var bool
      *
-     * @ORM\Column(name="active", type="boolean", unique=true)
+     * @ORM\Column(name="active", type="boolean")
      */
     private $active;
 
@@ -466,4 +466,3 @@ class User
         return $this->ordre;
     }
 }
-

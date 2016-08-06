@@ -16,6 +16,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/original-AdminLTE.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/original-AdminLTE-all-skins.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/mgc.css') }}">
+    {% block stylesheets %}{% endblock %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -61,6 +62,9 @@ desired effect
 <script src="{{ asset('adminlte/dist/js/original-AdminLTE-jquery-2.2.3.min.js') }}"></script>
 <script src="{{ asset('adminlte/dist/js/original-AdminLTE-bootstrap.min.js') }}"></script>
 <script src="{{ asset('adminlte/dist/js/original-AdminLTE-app.min.js') }}"></script>
+<script src="{{ asset('adminlte/dist/js/mgc.js') }}"></script>
+
+{% block javascripts %}{% endblock %}
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the

@@ -2,24 +2,31 @@
 
 namespace MGC\Modules\Admin\UserBundle\Controller;
 
+use MGC\Modules\Admin\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/admin/users/", name="admin-mod-user-list")
+     * @Route("/admin/users/", name="admin-mgc-users")
      */
     public function indexAction()
     {
-        return $this->render('UserBundle:Default:index.html.twig');
+        $users = $this->getDoctrine()->getRepository('UserBundle:User')->findAll();
+
+        return $this->render('UserBundle:Default:index.html.twig', array(
+            'users' => $users,
+        ));
     }
 
     /**
-     * @Route("/admin/users/add/", name="admin-mod-user-add")
+     * @Route("/admin/users/add/", name="admin-mgc-users-add")
      */
     public function addAction()
     {
+
         return $this->render('UserBundle:Default:add.html.twig');
     }
 
@@ -28,7 +35,47 @@ class DefaultController extends Controller
      */
     public function designAction($id)
     {
-        return $this->render('UserBundle:Default:design.html.twig');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($id);
+
+        $skins = array(
+            'skin-blue' 		=> array('bg1'=>'#367fa9','bg2'=>'#3c8dbc','bg3'=>'#222d32','bg4'=>'#f4f5f7'),
+            'skin-black' 		=> array('bg1'=>'#fefefe','bg2'=>'#fefefe','bg3'=>'#222222','bg4'=>'#f4f5f7'),
+            'skin-purple' 		=> array('bg1'=>'#555299','bg2'=>'#605ca8','bg3'=>'#222d32','bg4'=>'#f4f5f7'),
+            'skin-green' 		=> array('bg1'=>'#008d4c','bg2'=>'#00a65a','bg3'=>'#222d32','bg4'=>'#f4f5f7'),
+            'skin-red' 			=> array('bg1'=>'#d33724','bg2'=>'#dd4b39','bg3'=>'#222d32','bg4'=>'#f4f5f7'),
+            'skin-yellow' 		=> array('bg1'=>'#db8b0b','bg2'=>'#f39c12','bg3'=>'#222d32','bg4'=>'#f4f5f7'),
+
+            'skin-blue-light' 	=> array('bg1'=>'#367fa9','bg2'=>'#3c8dbc','bg3'=>'#f9fafc','bg4'=>'#f4f5f7'),
+            'skin-black-light' 	=> array('bg1'=>'#fefefe','bg2'=>'#fefefe','bg3'=>'#f9fafc','bg4'=>'#f4f5f7'),
+            'skin-purple-light' => array('bg1'=>'#555299','bg2'=>'#605ca8','bg3'=>'#f9fafc','bg4'=>'#f4f5f7'),
+            'skin-green-light' 	=> array('bg1'=>'#008d4c','bg2'=>'#00a65a','bg3'=>'#f9fafc','bg4'=>'#f4f5f7'),
+            'skin-red-light' 	=> array('bg1'=>'#d33724','bg2'=>'#dd4b39','bg3'=>'#f9fafc','bg4'=>'#f4f5f7'),
+            'skin-yellow-light' => array('bg1'=>'#db8b0b','bg2'=>'#f39c12','bg3'=>'#f9fafc','bg4'=>'#f4f5f7'),
+        );
+
+        $backgrounds = array(
+            'bg-lightgray' => 'adminlte/dist/img/bg_lightgray.png',
+            'bg-gray' => 'adminlte/dist/img/bg_gray.png',
+            'bg-darkgray' => 'adminlte/dist/img/bg_darkgray.png',
+        );
+
+        $layouts = array(
+            'fixed' => 'fixed (plein écran) ',
+            'layout-boxed' => 'layout-boxed (écran réduit 1250px max) ',
+            'sidebar-collapse' => 'sidebar-collapse (sidebar fermé)',
+        );
+
+        return $this->render('UserBundle:Default:design.html.twig', array(
+            'user' => $user,
+
+            'backgrounds' => $backgrounds,
+            'layouts' => $layouts,
+            'skins' => $skins,
+
+            'user_background' => $backgrounds['bg-lightgray'],
+            'user_layout' => 'layout-boxed',
+            'user_skin' => $skins['skin-blue'],
+        ));
     }
 
     /**
@@ -36,7 +83,11 @@ class DefaultController extends Controller
      */
     public function editAction($id)
     {
-        return $this->render('UserBundle:Default:edit.html.twig');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($id);
+
+        return $this->render('UserBundle:Default:edit.html.twig', array(
+            'user' => $user,
+        ));
     }
 
     /**
@@ -44,7 +95,11 @@ class DefaultController extends Controller
      */
     public function gadgetsAction($id)
     {
-        return $this->render('UserBundle:Default:gadgets.html.twig');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($id);
+
+        return $this->render('UserBundle:Default:gadgets.html.twig', array(
+            'user' => $user,
+        ));
     }
 
     /**
@@ -52,7 +107,11 @@ class DefaultController extends Controller
      */
     public function infosAction($id)
     {
-        return $this->render('UserBundle:Default:infos.html.twig');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($id);
+
+        return $this->render('UserBundle:Default:infos.html.twig', array(
+            'user' => $user,
+        ));
     }
 
     /**
@@ -60,7 +119,11 @@ class DefaultController extends Controller
      */
     public function permissionsAction($id)
     {
-        return $this->render('UserBundle:Default:permissions.html.twig');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($id);
+
+        return $this->render('UserBundle:Default:permissions.html.twig', array(
+            'user' => $user,
+        ));
     }
 
     /**
@@ -68,7 +131,11 @@ class DefaultController extends Controller
      */
     public function sessionsAction($id)
     {
-        return $this->render('UserBundle:Default:sessions.html.twig');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($id);
+
+        return $this->render('UserBundle:Default:sessions.html.twig', array(
+            'user' => $user,
+        ));
     }
 
     /**
@@ -76,7 +143,11 @@ class DefaultController extends Controller
      */
     public function shortcutsAction($id)
     {
-        return $this->render('UserBundle:Default:shortcuts.html.twig');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($id);
+
+        return $this->render('UserBundle:Default:shortcuts.html.twig', array(
+            'user' => $user,
+        ));
     }
 
     /**
@@ -84,7 +155,11 @@ class DefaultController extends Controller
      */
     public function statsAction($id)
     {
-        return $this->render('UserBundle:Default:stats.html.twig');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($id);
+
+        return $this->render('UserBundle:Default:stats.html.twig', array(
+            'user' => $user,
+        ));
     }
 
     /**
@@ -92,6 +167,10 @@ class DefaultController extends Controller
      */
     public function timelineAction($id)
     {
-        return $this->render('UserBundle:Default:timeline.html.twig');
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->find($id);
+
+        return $this->render('UserBundle:Default:timeline.html.twig', array(
+            'user' => $user,
+        ));
     }
 }

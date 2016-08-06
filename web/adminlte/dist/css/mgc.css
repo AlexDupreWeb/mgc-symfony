@@ -1,3 +1,54 @@
+/* ===== =====
+    Background
+===== ===== */
+.layout-boxed{
+    background: #dedede;
+}
+/*.bg-lightgray,*/
+.layout-boxed.bg-lightgray,
+.lockscreen.bg-lightgray,
+.login-page.bg-lightgray,
+.device-bg-lightgray{
+    background:url('../img/bg_lightgray.png') repeat fixed;
+}
+/*.bg-gray,*/
+.layout-boxed.bg-gray,
+.lockscreen.bg-gray,
+.login-page.bg-gray,
+.device-bg-gray{
+    background:url('../img/bg_gray.png') repeat fixed;
+}
+/*.bg-darkgray,*/
+.layout-boxed.bg-darkgray,
+.lockscreen.bg-darkgray,
+.login-page.bg-darkgray,
+.device-bg-darkgray{
+    background:url('../img/bg_darkgray.png') repeat fixed;
+}
+.content-wrapper, .right-side {
+    background: #eeeeee;
+}
+
+/* ===== =====
+    Raccourcis CSS
+===== ===== */
+.text-line-through{
+    text-decoration: line-through !important;
+}
+
+.no-margin{
+    margin: 0 !important;
+}
+.no-padding{
+    padding: 0 !important;
+}
+.no-box-shadow{
+    box-shadow: none !important;
+}
+
+/* ===== =====
+    BOX
+===== ===== */
 .box.box-solid.box-black > .box-header {
     background-color: #111;
     color: #fff;
@@ -7,4 +58,91 @@
 }
 .box.box-solid.box-black > .box-header .btn-box-tool{
     color: #fff;
+}
+
+/* ===== =====
+    GOOGLE PREVIEW
+===== ===== */
+#seo-google-preview{
+    -webkit-box-shadow:  0px 0px 5px 0px #CCC;
+    box-shadow:  0px 0px 5px 0px #CCC;
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 7px;
+    width: 526px;
+}
+#seo-google-preview #seo-google-preview-title-container{
+    display: block;
+    margin-top: 2px;
+    width: 512px;
+}
+#seo-google-preview #seo-google-preview-title-container #seo-google-preview-title-snippet{
+    color: #1a0dab;
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.2;
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#seo-google-preview #seo-google-preview-url-container{
+    display: block;
+    margin-top: 2px;
+    width: 512px;
+}
+#seo-google-preview #seo-google-preview-url-container #seo-google-preview-url-domain,
+#seo-google-preview #seo-google-preview-url-container #seo-google-preview-url-permalink{
+    color: #006621;
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height:16px;
+
+}
+#seo-google-preview #seo-google-preview-url-container #seo-google-preview-url-domain{
+    float: left;
+}
+
+#seo-google-preview #seo-google-preview-description-container{
+    display: block;
+    margin-top: 2px;
+    width: 512px;
+}
+#seo-google-preview #seo-google-preview-description-container #seo-google-preview-description-snippet{
+    clear: both;
+    color: #333333;
+    display: block;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* ===== =====
+    DIVERS
+===== ===== */
+table.table tr td {
+    vertical-align: middle;
+}
+
+.thumbnail-url{
+    font-size: 10px;
+}
+
+.legende-timeline > div > .fa,
+.legende-timeline > div > .glyphicon {
+    background: none repeat scroll 0 0 #eee;
+    border-radius: 50%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    color: #666;
+    font-size: 15px;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 3px;
+    text-align: center;
+    width: 30px;
 }

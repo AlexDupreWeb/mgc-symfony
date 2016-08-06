@@ -16,98 +16,114 @@
         <!-- Main content -->
         <section class="content">
 
-            <!-- Your Page Content Here -->
+            <div class="row">
+                <div class="col-md-3">
+                    {% include "UserBundle:Default:inc/profile.html.twig" %}
+                </div>
+                <div class="col-md-9">
 
-            <form role="form">
-                <br>
-                <div class="row">
-                    <div class="col-md-9">
-                        <p>Choix du thème: </p>
-                        <div class="row">
+                    <div class="nav-tabs-custom">
+                        {% include "UserBundle:Default:inc/nav.html.twig" %}
+                        <div class="tab-content">
+                            <div class="tab-pane active">
 
-                            {foreach from=$skins key=name item=skin}
-                            <div class="col-md-2 col-xs-4">
-                                <a class="clearfix full-opacity-hover" style="margin-bottom: 10px; display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" data-skin="{$name}" href="javascript:void(0);">
-                                    <div>
-                                        <span style="display:block; width: 20%; float: left; height: 7px; background: {$skin.bg1};"></span>
-                                        <span style="display:block; width: 80%; float: left; height: 7px; background: {$skin.bg2};"></span>
-                                    </div>
-                                    <div>
-                                        <span style="display:block; width: 20%; float: left; height: 45px; background: {$skin.bg3};"></span>
-                                        <span style="display:block; width: 80%; float: left; height: 45px; background: {$skin.bg4};"></span>
-                                    </div>
-                                </a>
-                            </div>
-                            {/foreach}
-                        </div>
-                    </div>
+                                <form role="form">
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <p>Choix du thème: </p>
+                                            <div class="row">
 
-                    <div class="col-md-3">
-                        <p>Thème sélectionné: </p>
-                        <div class="row">
-                            <div class="col-md-2 col-xs-12"></div>
-                            <div class="col-md-8 col-xs-12">
-                                <a class="clearfix full-opacity-hover" id="preview-skin" style="margin-bottom: 10px; display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" href="javascript:void(0);">
-                                    <div>
-                                        <span style="display:block; width: 20%; float: left; height: 7px; background: {$user_skin.bg1};"></span>
-                                        <span style="display:block; width: 80%; float: left; height: 7px; background: {$user_skin.bg2};"></span>
+                                                {% for name, skin in skins %}
+                                                <div class="col-md-2 col-xs-4">
+                                                    <a class="clearfix full-opacity-hover" style="margin-bottom: 10px; display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" data-skin="{{ name }}" href="javascript:void(0);">
+                                                        <div>
+                                                            <span style="display:block; width: 20%; float: left; height: 7px; background: {{ skin.bg1 }};"></span>
+                                                            <span style="display:block; width: 80%; float: left; height: 7px; background: {{ skin.bg2 }};"></span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="display:block; width: 20%; float: left; height: 45px; background: {{ skin.bg3 }};"></span>
+                                                            <span style="display:block; width: 80%; float: left; height: 45px; background: {{ skin.bg4 }};"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                {% endfor %}
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <p>Thème sélectionné: </p>
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-12"></div>
+                                                <div class="col-md-8 col-xs-12">
+                                                    <a class="clearfix full-opacity-hover" id="preview-skin" style="margin-bottom: 10px; display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" href="javascript:void(0);">
+                                                        <div>
+                                                            <span style="display:block; width: 20%; float: left; height: 7px; background: {{ user_skin.bg1 }};"></span>
+                                                            <span style="display:block; width: 80%; float: left; height: 7px; background: {{ user_skin.bg2 }};"></span>
+                                                        </div>
+                                                        <div>
+                                                            <span style="display:block; width: 20%; float: left; height: 45px; background: {{ user_skin.bg3 }};"></span>
+                                                            <span style="display:block; width: 80%; float: left; height: 45px; background: {{ user_skin.bg4 }};"></span>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <span style="display:block; width: 20%; float: left; height: 45px; background: {$user_skin.bg3};"></span>
-                                        <span style="display:block; width: 80%; float: left; height: 45px; background: {$user_skin.bg4};"></span>
+
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <p>Choix du fond: </p>
+                                            <div class="row">
+                                                {% for name, background in backgrounds %}
+                                                <div class="col-md-2 col-xs-4">
+                                                    <a class="clearfix" style="margin-bottom: 10px; display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4);" data-background="{{ name }}" href="javascript:void(0);">
+                                                        <div style="height: 52px; background: url({{ asset(background) }})"></div>
+                                                    </a>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3">
+                                            <p>Fond sélectionné: </p>
+                                            <div class="row">
+                                                <div class="col-md-2 col-xs-12"></div>
+                                                <div class="col-md-8 col-xs-12">
+                                                    <a class="clearfix" id="preview-background" style="margin-bottom: 10px; display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" href="javascript:void(0);">
+                                                        <div style="height: 52px; background: url({{ asset(user_background) }})"></div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </a>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p>Choix de l'affichage: </p>
+                                            <div class="form-group">
+                                                {% for name, layout in layouts %}
+                                                <div class="radio">
+                                                    <label><input type="radio" name="data-layout" value="{{ name }}" data-layout="{{ name }}" {% if name == user_layout %}checked="checked"{% endif %}> {{ layout }}</label>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr>
+
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Enregistrer</button>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-9">
-                        <p>Choix du fond: </p>
-                        <div class="row">
-                            {foreach from=$backgrounds key=name item=background}
-                            <div class="col-md-2 col-xs-4">
-                                <a class="clearfix" style="margin-bottom: 10px; display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4);" data-background="{$name}" href="javascript:void(0);">
-                                    <div style="height: 52px; background: url({$background})"></div>
-                                </a>
-                            </div>
-                            {/foreach}
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <p>Fond sélectionné: </p>
-                        <div class="row">
-                            <div class="col-md-2 col-xs-12"></div>
-                            <div class="col-md-8 col-xs-12">
-                                <a class="clearfix" id="preview-background" style="margin-bottom: 10px; display: block; box-shadow: 0 0 3px rgba(0,0,0,0.4)" href="javascript:void(0);">
-                                    <div style="height: 52px; background: url({$user_background})"></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-4">
-                        <p>Choix de l'affichage: </p>
-                        <div class="form-group">
-                            {foreach from=$layouts key=name item=layout}
-                            <div class="radio">
-                                <label><input type="radio" name="data-layout" value="{$name}" data-layout="{$name}" {if $name==$user_layout}checked="checked"{/if}> {$layout}</label>
-                            </div>
-                            {/foreach}
-                        </div>
-                    </div>
-                </div>
-
-                <hr>
-
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o"></i> Enregistrer</button>
-                </div>
-            </form>
+            </div>
 
         </section>
     </div>
