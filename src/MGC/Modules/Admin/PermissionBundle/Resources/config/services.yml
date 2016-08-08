@@ -1,0 +1,4 @@
+services:
+#    permission.example:
+#        class: MGC\Modules\Admin\PermissionBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
