@@ -36,6 +36,10 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        array_active:
+          1: oui
+          0: non
 
 # Doctrine Configuration
 doctrine:

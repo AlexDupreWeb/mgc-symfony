@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                <i class="fa fa-star text-yellow"></i> Liste des utilisateurs
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- CONTENT -->
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow">
+                            <i class="fa fa-group"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Utilisateurs</span>
+                            <span class="info-box-number">1,410</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-green">
+                            <i class="fa fa-toggle-on"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Actifs</span>
+                            <span class="info-box-number">1,410</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-red">
+                            <i class="fa fa-toggle-off"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Inactifs</span>
+                            <span class="info-box-number">1,410</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-gray-light">
+                            <i class="fa fa-search"></i>
+                        </span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Recherche</span>
+                            <span class="info-box-number">{{ roles|length }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    {% if roles|length > 0 %}
+                    <form action="{{ url('admin-mgc-roles') }}" method="get">
+                        <div class="box box-solid box-black">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">&nbsp;</h3>
+                                <div class="box-tools pull-right">
+                                    <a class="btn btn-box-tool" href="{{ url('admin-mgc-roles-add') }}"><i class="fa fa-plus"></i> Ajouter</a>
+                                    <a class="btn btn-box-tool" data-toggle="popin-help" href="#"><i class="fa fa-question"></i> Aide</a>
+                                </div>
+                            </div>
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <colgroup>
+                                        <col width="2%">
+                                        <col width="5%">
+                                        <col width="50%">
+                                        <col width="23%">
+                                        <col width="7%">
+                                        <col width="13%">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>
+                                                ID
+                                                <a href="#"><i class="fa fa-caret-down"></i></a>
+                                                <a href="#"><i class="fa fa-caret-up"></i></a>
+                                            </th>
+                                            <th>
+                                                Nom
+                                                <a href="#"><i class="fa fa-caret-down"></i></a>
+                                                <a href="#"><i class="fa fa-caret-up"></i></a>
+                                            </th>
+                                            <th>
+                                                Nombre d'utilisateurs
+                                                <a href="#"><i class="fa fa-caret-down"></i></a>
+                                                <a href="#ucount"><i class="fa fa-caret-up"></i></a>
+                                            </th>
+                                            <th>
+                                                Activé
+                                                <a href="#"><i class="fa fa-caret-down"></i></a>
+                                                <a href="#"><i class="fa fa-caret-up"></i></a>
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="checkbox" name="" value=""/></td>
+                                            <td><input type="text" class="form-control" name="s[id]" value="{% if app.request.get('s')['id'] is defined %}{{ app.request.get('s')['id'] }}{% endif %}" placeholder="id" /></td>
+                                            <td><input type="text" class="form-control" name="s[name]" value="{% if app.request.get('s')['name'] is defined %}{{ app.request.get('s')['name'] }}{% endif %}" placeholder="nom" /></td>
+                                            <td></td>
+                                            <td>
+                                                <select class="form-control" name="s[active]">
+                                                    <option value="">-</option>
+
+                                                    {% for key, val in array_active|sort|reverse(true) %}
+                                                        <option value="{{ key }}" {% if app.request.get('s')['name'] is defined and app.request.get('s')['active'] == key %}selected{% endif %}>{{ val }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-default"><i class="fa fa-search"></i> Rechercher</button></td>
+                                        </tr>
+                                    {% for role in roles %}
+                                        <tr>
+                                            <td><input type="checkbox" name="" value=""/></td>
+                                            <td>{{ role.id }}</td>
+                                            <td>{{ role.name }}</td>
+                                            <td>{{ role.usercounter }}</td>
+                                            <td class="text-center">
+                                                {% if role.active %}
+                                                <a class="text-green" href="role_active/{{ role.id }}"><i class="fa fa-check-circle"></i></a>
+                                                {% else %}
+                                                <a class="text-red" href="role_active/{{ role.id }}"><i class="fa fa-times-circle"></i></a>
+                                                {% endif %}
+                                            </td>
+
+                                            <td>
+                                                <div class="btn-group">
+                                                    <a class="btn btn-default" href="{{ url('admin-mgc-roles') }}edit/{{ role.id }}"><i class="fa fa-pencil"></i> Modifier</a>
+                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                        <span class="caret"></span><span class="sr-only">Action</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="{{ url('admin-mgc-roles') }}edit/{{ role.id }}"><i class="fa fa-pencil"></i> Modifier</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="{{ url('admin-mgc-roles') }}#"><i class="fa fa-trash"></i> Supprimer</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="box-footer clearfix">
+                                <div class="text-center">
+                                    <ul class="pagination pagination-sm no-margin">
+                                        <li>
+                                            <a href="#">«</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">3</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">»</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    {% else %}
+                        <div class="alert alert-info">
+                            <h4><i class="icon fa fa-info-circle"></i> Information </h4>
+                            Aucun rôle pour l'administration.
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <!-- CONTENT END -->
+
+        </section>
+    </div>
+{% endblock %}
