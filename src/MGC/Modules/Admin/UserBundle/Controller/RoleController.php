@@ -2,7 +2,8 @@
 
 namespace MGC\Modules\Admin\UserBundle\Controller;
 
-use MGC\Modules\Admin\UserBundle\Entity\User;
+use AppBundle\Utils\Pagination;
+use AppBundle\Utils\PaginationCleaner;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
@@ -66,8 +67,31 @@ class RoleController extends Controller
 
         $roles = $queryBuilder->getQuery()->getResult();
 
+        //Count All Roles
+        $rolesCount = $this->getDoctrine()->getRepository("UserBundle:Role")->createQueryBuilder('c')->select('COUNT(c.id)')->getQuery()->getSingleScalarResult();
+        $rolesEnabledCount = $this->getDoctrine()->getRepository("UserBundle:Role")->createQueryBuilder('c')->select('COUNT(c.id)')->where("c.active='1'")->getQuery()->getSingleScalarResult();
+        $rolesDisabledCount = $this->getDoctrine()->getRepository("UserBundle:Role")->createQueryBuilder('c')->select('COUNT(c.id)')->where("c.active='0'")->getQuery()->getSingleScalarResult();
+
+
+        //Pagination
+        
+        $request->query->remove('p');
+
+        $numberPages = ceil($rolesCount/$limit);
+        $currentUrl = PaginationCleaner::getCurrentUrl($request->getUri());
+        $currentParams = PaginationCleaner::getCurrentParams($request->query->all());
+
+        $pagination = new Pagination($currentUrl);
+        $pagination->setParamsUrl($currentParams);
+        $pagination->setParamPageUrl('p');
+        $pagination->setNumberPages($numberPages);
+
         return $this->render('UserBundle:Role:index.html.twig', array(
             'roles' => $roles,
+            'pagination' => $pagination,
+            'rolesCount' => $rolesCount,
+            'rolesEnabledCount' => $rolesEnabledCount,
+            'rolesDisabledCount' => $rolesDisabledCount,
         ));
     }
 

@@ -4,7 +4,7 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                <i class="fa fa-star text-yellow"></i> Liste des utilisateurs
+                <i class="fa fa-star text-yellow"></i> Liste des rôles
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -24,8 +24,8 @@
                             <i class="fa fa-group"></i>
                         </span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Utilisateurs</span>
-                            <span class="info-box-number">1,410</span>
+                            <span class="info-box-text">Rôles</span>
+                            <span class="info-box-number">{{ rolesCount }}</span>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                         </span>
                         <div class="info-box-content">
                             <span class="info-box-text">Actifs</span>
-                            <span class="info-box-number">1,410</span>
+                            <span class="info-box-number">{{ rolesEnabledCount }}</span>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                         </span>
                         <div class="info-box-content">
                             <span class="info-box-text">Inactifs</span>
-                            <span class="info-box-number">1,410</span>
+                            <span class="info-box-number">{{ rolesDisabledCount }}</span>
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                                             </th>
                                             <th>
                                                 Nombre d'utilisateurs
-                                                <a href="#"><i class="fa fa-caret-down"></i></a>
+                                                <a href="#ucount"><i class="fa fa-caret-down"></i></a>
                                                 <a href="#ucount"><i class="fa fa-caret-up"></i></a>
                                             </th>
                                             <th>
@@ -165,27 +165,21 @@
                                     </tbody>
                                 </table>
                             </div>
+
+                            {% if pagination is defined and pagination.numberPages > 1 %}
+                            {% set p_urls = pagination.create(2) %}
                             <div class="box-footer clearfix">
                                 <div class="text-center">
                                     <ul class="pagination pagination-sm no-margin">
-                                        <li>
-                                            <a href="#">«</a>
+                                        {% for p_url in p_urls %}
+                                        <li {% if p_url.class != ''%}class="{{ p_url.class }}"{% endif %}>
+                                            <a href="{{ p_url.url }}">{{ p_url.libelle|raw }}</a>
                                         </li>
-                                        <li>
-                                            <a href="#">1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">2</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">3</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">»</a>
-                                        </li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
+                            {% endif %}
                         </div>
                     </form>
                     {% else %}
