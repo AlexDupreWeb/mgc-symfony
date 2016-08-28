@@ -123,10 +123,10 @@
                                             <td></td>
                                             <td>
                                                 <select class="form-control" name="s[active]">
-                                                    <option value="">-</option>
+                                                    <option value="" {% if app.request.get('s')['active'] is not defined or (app.request.get('s')['active'] is defined and app.request.get('s')['active'] == '') %}selected{% endif %}>-</option>
 
                                                     {% for key, val in array_active|sort|reverse(true) %}
-                                                        <option value="{{ key }}" {% if app.request.get('s')['name'] is defined and app.request.get('s')['active'] == key %}selected{% endif %}>{{ val }}</option>
+                                                        <option value="{{ key }}" {% if app.request.get('s')['active'] is defined and app.request.get('s')['active'] != '' and app.request.get('s')['active'] == key %}selected{% endif %}>{{ val }}</option>
                                                     {% endfor %}
                                                 </select>
                                             </td>
