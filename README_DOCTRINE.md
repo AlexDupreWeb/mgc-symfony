@@ -9,7 +9,7 @@ Create an entity
 
 Update database when an entity is create, update or delete
 
-    php app/console doctrine:schema:update --force
+    php bin/console doctrine:schema:update --force
 
 
 ## PHP
