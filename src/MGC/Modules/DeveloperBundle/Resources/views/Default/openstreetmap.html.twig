@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Open Street Map
+                <small>How to use it?</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Your Page Content Here -->
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="mapOpenStreetMap1"></div>
+                </div>
+                <div class="col-md-4">
+                    <pre>initOpenStreetMap('mapOpenStreetMap1', 49.43711, 1.09117, 13);</pre>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="mapOpenStreetMap2"></div>
+                </div>
+                <div class="col-md-4">
+                    <pre>initOpenStreetMap('mapOpenStreetMap2', 49.43711, 1.09117, 13, jsonForMarkers);</pre>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="mapOpenStreetMap3"></div>
+                </div>
+                <div class="col-md-4">
+                    <pre>initOpenStreetMap('mapOpenStreetMap3', 49.43711, 1.09117, 13, jsonForMarkers, jsonForMarkers);</pre>
+                </div>
+            </div>
+
+            <!-- Your Page Content Here - end -->
+
+        </section>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ asset('openstreetmap/css/osm.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
+    <script src="{{ asset('openstreetmap/js/osm.js') }}"></script>
+
+    <script type="text/javascript">
+
+        var jsonForMarkers = '[{"lat":"49.4431","long":"1.0993","text":"Test<\/b><br>Rouen"},{"lat":"49.421235","long":"1.075605","text":"Test"},{"lat":"49.52758","long":"1.03924","text":""}]';
+
+        initOpenStreetMap('mapOpenStreetMap1', 49.43711, 1.09117, 13);
+        initOpenStreetMap('mapOpenStreetMap2', 49.43711, 1.09117, 13, jsonForMarkers);
+        initOpenStreetMap('mapOpenStreetMap3', 49.43711, 1.09117, 13, jsonForMarkers, jsonForMarkers);
+
+    </script>
+{% endblock %}
