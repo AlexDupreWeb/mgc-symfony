@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Page Header
+                <small>Optional description</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-3">
+                    {% include "AdminBundle:User:inc/profile.html.twig" %}
+                </div>
+                <div class="col-md-9">
+
+                    <div class="nav-tabs-custom">
+                        {% include "AdminBundle:User:inc/nav.html.twig" %}
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Page Header
+                <small>Optional description</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-3">
+                    {% include "AdminBundle:User:inc/profile.html.twig" %}
+                </div>
+                <div class="col-md-9">
+
+                    <div class="nav-tabs-custom">
+                        {% include "AdminBundle:User:inc/nav.html.twig" %}
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <colgroup>
+                                                    <col width="5%">
+                                                    <col width="5%">
+                                                    <col width="35%">
+                                                    <col width="10%">
+                                                    <col width="10%">
+                                                    <col width="10%">
+                                                    <col width="10%">
+                                                    <col width="10%">
+                                                    <col width="5%">
+                                                </colgroup>
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th>SID</th>
+                                                    <th>IP</th>
+                                                    <th>OS</th>
+                                                    <th>Navigateur</th>
+                                                    <th>Version</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {if isset($user_sessions)}
+                                                {foreach from=$user_sessions item=user_session}
+                                                <tr>
+                                                    <td>
+                                                        {if $user_session.user_online=='oui'} <i class="fa fa-circle text-success"></i>
+                                                        {else} <i class="fa fa-circle text-danger"></i>
+                                                        {/if}
+                                                    </td>
+                                                    <td>
+                                                        <span data-toggle="tooltip" data-placement="top" title="{$user_session.session_time_out|date_format:"%d/%m/%Y %H:%M:%S"}">
+                                                        {if $user_session.session_time_out > $smarty.now}<i class="fa fa-chain"></i>
+                                                        {else}<i class="fa fa-chain-broken"></i>
+                                                        {/if}
+                                                        </span>
+                                                    </td>
+                                                    <td>{$user_session.sid}</td>
+                                                    <td>{$user_session.ip}</td>
+                                                    <td>{$user_session.platform}</td>
+                                                    <td>{$user_session.browser}</td>
+                                                    <td>{$user_session.browser_version}</td>
+                                                    <td></td>
+                                                    <td><a href="#"><i class="fa fa-trash"></i></a></td>
+                                                </tr>
+                                                {/foreach}
+                                                {/if}
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+{% endblock %}

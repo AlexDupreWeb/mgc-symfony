@@ -1,10 +1,10 @@
-permission:
-    resource: "@PermissionBundle/Controller/"
+admin:
+    resource: "@AdminBundle/Controller/"
     type:     annotation
     prefix:   /
 
-user:
-    resource: "@UserBundle/Controller/"
+core:
+    resource: "@CoreBundle/Controller/"
     type:     annotation
     prefix:   /
 
@@ -12,7 +12,3 @@ developer:
     resource: "@DeveloperBundle/Controller/"
     type:     annotation
     prefix:   /
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation

@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Page Header
+                <small>Optional description</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div class="row">
+                <div class="col-md-3">
+                    {% include "AdminBundle:User:inc/profile.html.twig" %}
+                </div>
+                <div class="col-md-9">
+
+                    <div class="nav-tabs-custom">
+                        {% include "AdminBundle:User:inc/nav.html.twig" %}
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+
+                                <div class="callout callout-default">
+                                    <h4>Légende</h4>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul>
+                                                <li>Liste des raccourcis disponibles</li>
+                                                <li>Liste des raccourcis utilisés</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="panel no-margin">
+                                            <div class="panel-body">
+                                                <i class="fa fa-list"></i> <b>Mes raccourcis</b>
+                                            </div>
+                                        </div>
+                                        <ul class="list-group connectedSortable" id="sortable1">
+                                            <li class="list-group-item list-group-item-default">Cras justo odio</li>
+                                            <li class="list-group-item list-group-item-default">Dapibus ac facilisis in</li>
+                                            <li class="list-group-item list-group-item-default">Morbi leo risus</li>
+                                            <li class="list-group-item list-group-item-default">Porta ac consectetur ac</li>
+                                            <li class="list-group-item list-group-item-default">Vestibulum at eros</li>
+
+                                            <li class="list-group-item list-group-item-default">Test
+                                                <ul class="list-group connectedSortable">
+                                                    <li class="list-group-item list-group-item-default">Cras justo odio</li>
+                                                    <li class="list-group-item list-group-item-default">Dapibus ac facilisis in</li>
+                                                    <li class="list-group-item list-group-item-default">Morbi leo risus</li>
+                                                    <li class="list-group-item list-group-item-default">Porta ac consectetur ac</li>
+                                                    <li class="list-group-item list-group-item-default">Vestibulum at eros</li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="panel no-margin">
+                                            <div class="panel-body">
+                                                <i class="fa fa-list"></i> <b>Raccourcis disponibles - alexandre-dupre.fr</b>
+                                            </div>
+                                        </div>
+                                        <ul class="list-group connectedSortable" id="sortable2">
+                                            <li class="list-group-item list-group-item-info">Cras justo odio</li>
+                                            <li class="list-group-item list-group-item-info">Dapibus ac facilisis in</li>
+                                            <li class="list-group-item list-group-item-info">Morbi leo risus</li>
+                                            <li class="list-group-item list-group-item-info">Porta ac consectetur ac</li>
+                                            <li class="list-group-item list-group-item-info">Vestibulum at eros</li>
+                                        </ul>
+
+                                        <div class="panel no-margin">
+                                            <div class="panel-body">
+                                                <i class="fa fa-list"></i> <b>Raccourcis disponibles - qcmmaster.fr</b>
+                                            </div>
+                                        </div>
+                                        <ul class="list-group connectedSortable" id="sortable2">
+                                            <li class="list-group-item list-group-item-info">Cras justo odio</li>
+                                            <li class="list-group-item list-group-item-info">Dapibus ac facilisis in</li>
+                                            <li class="list-group-item list-group-item-info">Morbi leo risus</li>
+                                            <li class="list-group-item list-group-item-info">Porta ac consectetur ac</li>
+                                            <li class="list-group-item list-group-item-info">Vestibulum at eros</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+{% endblock %}
