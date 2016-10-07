@@ -17,6 +17,17 @@
         <section class="content">
 
             <!-- Your Page Content Here -->
+            {{ 'Hello'|trans }} Alexandre!
+
+            <br>
+            app.request.locale:
+            {{ app.request.locale }}
+
+            <br>
+            app.request.getLocale():
+            {{ app.request.getLocale() }}
+
+            {{ 'greeting' | trans({}, "messages", app.request.locale) }}
 
         </section>
     </div>
