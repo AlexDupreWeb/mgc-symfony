@@ -28,10 +28,104 @@ class DefaultController extends MGCController
         $request->setLocale('en');
         $request->setLocale('fr');
 
+        $home_shortcuts = array(
+            array(
+                'title' => 'Dossier',
+                'icon' => $this->getIcon('folder'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Settings',
+                'icon' => $this->getIcon('cog'),
+                'link' => '#',
+            ),
+
+            array(
+                'title' => 'Developer',
+                'icon' => $this->getIcon('terminal'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Note',
+                'icon' => $this->getIcon('note'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Help',
+                'icon' => $this->getIcon('help'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Dictionary',
+                'icon' => $this->getIcon('dictionary'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Contacts',
+                'icon' => $this->getIcon('addressbook'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Wiki',
+                'icon' => $this->getIcon('wiki'),
+                'link' => '#',
+            ),
+
+            array(
+                'title' => 'Diagram',
+                'icon' => $this->getIcon('diagram'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Sketchbook',
+                'icon' => $this->getIcon('sketchbook'),
+                'link' => '#',
+            ),
+
+            array(
+                'title' => 'Dropbox',
+                'icon' => $this->getIcon('dropbox'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Google Drive',
+                'icon' => $this->getIcon('googledrive'),
+                'link' => '#',
+            ),
+
+            array(
+                'title' => 'Cursor',
+                'icon' => $this->getIcon('cursor'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Geolocation',
+                'icon' => $this->getIcon('geolocation'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Picture',
+                'icon' => $this->getIcon('picture'),
+                'link' => '#',
+            ),
+            array(
+                'title' => 'Toggles',
+                'icon' => $this->getIcon('toggles'),
+                'link' => '#',
+            ),
+
+            array(
+                'title' => 'Test',
+                'icon' => $this->getIcon('test'),
+                'link' => '#',
+            ),
+
+        );
+
         // replace this example code with whatever you need
-        return $this->render('default/home.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
+        return $this->render('default/home.html.twig', array(
+            'home_shortcuts' => $home_shortcuts,
+        ));
     }
 
     /**

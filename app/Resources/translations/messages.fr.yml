@@ -1,4 +1,9 @@
-greeting: 'Bonjourr'
-Symfony2 is great: J'aime Symfony2
-"Phone number:": "Numéro de téléphone :"
-Hello: Bonjour
+mgc:
+  global:
+    administration: "administration"
+    dashboard: "tableau de bord"
+    home: "accueil"
+    shortcuts: "raccourcis"
+
+  home:
+    content_manager: "gestionnaire de contenu"

@@ -60,6 +60,15 @@
     color: #fff;
 }
 
+.info-box-icon > img {
+    max-height: 70px;
+    vertical-align: -20px;
+}
+
+.home-thumbnail > img{
+    max-height: 75px;
+}
+
 /* ===== =====
     GOOGLE PREVIEW
 ===== ===== */

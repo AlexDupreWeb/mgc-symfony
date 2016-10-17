@@ -4,30 +4,102 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                {{ 'mgc.global.administration'|trans({}, "messages", app.request.locale)|capitalize }}
+                <small>{{ 'mgc.home.content_manager'|trans({}, "messages", app.request.locale)|capitalize }}</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
+                <li class="active">{{ 'mgc.global.home'|trans({}, "messages", app.request.locale)|capitalize }}</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
 
-            <!-- Your Page Content Here -->
-            {{ 'Hello'|trans }} Alexandre!
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
 
-            <br>
-            app.request.locale:
-            {{ app.request.locale }}
+                        <div class="col-lg-6 col-md-12 col-sm-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-black">
+                                    <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png" alt="">
+                                </span>
 
-            <br>
-            app.request.getLocale():
-            {{ app.request.getLocale() }}
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Alexandre</span>
+                                    <span class="progress-description">
+                                        <br>
+                                        <a class="btn btn-block btn-default" href="#">
+                                            Profile
+                                        </a>
+                                    </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-6">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-yellow">
+                                    <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678081-life-buoy-128.png" alt="">
+                                </span>
 
-            {{ 'greeting' | trans({}, "messages", app.request.locale) }}
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Help</span>
+                                    <span class="progress-description">
+                                        <br>
+                                        <a class="btn btn-block btn-default" href="#">
+                                            F.A.Q.
+                                        </a>
+                                    </span>
+                                </div>
+                                <!-- /.info-box-content -->
+                            </div>
+                            <!-- /.info-box -->
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+
+                        {% for i in 0..3 %}
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>150</h3>
+
+                                    <p>New Orders</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-shopping-cart"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                {% for shortcut in home_shortcuts %}
+                    <div class="col-xs-6 col-sm-4 col-md-2">
+                        <div class="thumbnail home-thumbnail">
+                            <img src="{{ shortcut.icon }}" alt="{{ shortcut.title }}" />
+                            <div class="caption">
+                                <a href="{{ shortcut.link }}" class="btn btn-default btn-block" role="button">{{ shortcut.title }}</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
 
         </section>
     </div>
