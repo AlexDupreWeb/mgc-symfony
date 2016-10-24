@@ -68,6 +68,11 @@
 .home-thumbnail > img{
     max-height: 75px;
 }
+.home-thumbnail .fa {
+    display: block;
+    font-size: 74px;
+    text-align: center;
+}
 
 /* ===== =====
     GOOGLE PREVIEW

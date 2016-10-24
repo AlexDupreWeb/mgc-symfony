@@ -14,7 +14,7 @@ class MGCController extends Controller
 
         if(isset($icons[$theme][$name])){
             return $icons[$theme][$name];
-        }elseif($icons[$theme]['no_icon']){
+        }elseif(isset($icons[$theme]['no_icon'])){
             return $icons[$theme]['no_icon'];
         }
 

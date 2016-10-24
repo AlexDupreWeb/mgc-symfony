@@ -16,51 +16,33 @@
         <section class="content">
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="row">
-
-                        <div class="col-lg-6 col-md-12 col-sm-6">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-black">
-                                    <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png" alt="">
-                                </span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Alexandre</span>
-                                    <span class="progress-description">
-                                        <br>
-                                        <a class="btn btn-block btn-default" href="#">
-                                            Profile
-                                        </a>
-                                    </span>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
+                <div class="col-md-4">
+                    <div class="box box-primary">
+                        <div class="box-body">
+                            <ul class="products-list product-list-in-box">
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img class="img-circle" src="{{ asset('uploads/avatars/_alexandre.png') }}" alt="Product Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">Alexandre</a>
+                                        <span class="product-description">BLABLABLA</span>
+                                    </div>
+                                </li>
+                                <li class="item">
+                                    <div class="product-img">
+                                        <img class="img-circle" src="{{ asset('adminlte/dist/img/icons/icon_help_128x128.png') }}" alt="Product Image">
+                                    </div>
+                                    <div class="product-info">
+                                        <a href="javascript:void(0)" class="product-title">F.A.Q</a>
+                                        <span class="product-description">Une question? Nous avons LA réponse!</span>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                        <div class="col-lg-6 col-md-12 col-sm-6">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-yellow">
-                                    <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678081-life-buoy-128.png" alt="">
-                                </span>
-
-                                <div class="info-box-content">
-                                    <span class="info-box-text">Help</span>
-                                    <span class="progress-description">
-                                        <br>
-                                        <a class="btn btn-block btn-default" href="#">
-                                            F.A.Q.
-                                        </a>
-                                    </span>
-                                </div>
-                                <!-- /.info-box-content -->
-                            </div>
-                            <!-- /.info-box -->
-                        </div>
-
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="row">
 
                         {% for i in 0..3 %}
@@ -98,6 +80,15 @@
                         </div>
                     </div>
                 {% endfor %}
+
+                <div class="col-xs-6 col-sm-4 col-md-2">
+                    <div class="thumbnail home-thumbnail">
+                        <i class="fa fa-pencil"></i>
+                        <div class="caption">
+                            <a href="#" class="btn btn-default btn-block" role="button">Test</a>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
