@@ -1,0 +1,9 @@
+mgc:
+  global:
+    administration: "administration"
+    dashboard: "tableau de bord"
+    home: "accueil"
+    shortcuts: "raccourcis"
+
+  home:
+    content_manager: "gestionnaire de contenu"

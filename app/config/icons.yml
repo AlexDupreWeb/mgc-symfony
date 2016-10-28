@@ -1,0 +1,27 @@
+parameters:
+  icons:
+    default:
+
+      addressbook: "adminlte/dist/img/icons/icon_addressbook_128x128.png"
+      cog: "adminlte/dist/img/icons/icon_cog_128x128.png"
+      cursor: "adminlte/dist/img/icons/icon_cursor_128x128.png"
+      diagram: "adminlte/dist/img/icons/icon_diagram_128x128.png"
+      dictionary: "adminlte/dist/img/icons/icon_dictionary_128x128.png"
+      folder: "adminlte/dist/img/icons/icon_folder_128x128.png"
+      geolocation: "adminlte/dist/img/icons/icon_geolocation_128x128.png"
+      help: "adminlte/dist/img/icons/icon_help_128x128.png"
+      note: "adminlte/dist/img/icons/icon_note_128x128.png"
+      picture: "adminlte/dist/img/icons/icon_picture_128x128.png"
+      sketchbook: "adminlte/dist/img/icons/icon_sketchbook_128x128.png"
+      terminal: "adminlte/dist/img/icons/icon_terminal_128x128.png"
+      toggles: "adminlte/dist/img/icons/icon_toggles_128x128.png"
+      wiki: "adminlte/dist/img/icons/icon_wiki_128x128.png"
+
+      dropbox: "adminlte/dist/img/icons/icon_dropbox_128x128.png"
+      googledrive: "adminlte/dist/img/icons/icon_googledrive_128x128.png"
+
+
+
+
+
+

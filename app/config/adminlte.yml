@@ -1,0 +1,86 @@
+parameters:
+  adminlte:
+    body-backgrounds:
+      bg-lightgray: 'adminlte/dist/img/bg_lightgray.png'
+      bg-gray: 'adminlte/dist/img/bg_gray.png'
+      bg-darkgray: 'adminlte/dist/img/bg_darkgray.png'
+    body-layouts:
+      fixed: 'fixed (plein écran)'
+      layout-boxed: 'layout-boxed (écran réduit 1250px max)'
+      sidebar-collapse': 'sidebar-collapse (sidebar fermé)'
+    body-skins:
+      skin-blue:
+        bg1: '#367fa9'
+        bg2: '#3c8dbc'
+        bg3: '#222d32'
+        bg4: '#f4f5f7'
+      skin-black:
+        bg1: '#fefefe'
+        bg2: '#fefefe'
+        bg3: '#222222'
+        bg4: '#f4f5f7'
+      skin-purple:
+        bg1: '#555299'
+        bg2: '#605ca8'
+        bg3: '#222d32'
+        bg4: '#f4f5f7'
+      skin-green:
+        bg1: '#008d4c'
+        bg2: '#00a65a'
+        bg3: '#222d32'
+        bg4: '#f4f5f7'
+      skin-red:
+        bg1: '#d33724'
+        bg2: '#dd4b39'
+        bg3: '#222d32'
+        bg4: '#f4f5f7'
+      skin-yellow:
+        bg1: '#db8b0b'
+        bg2: '#f39c12'
+        bg3: '#222d32'
+        bg4: '#f4f5f7'
+      skin-blue-light:
+        bg1: '#367fa9'
+        bg2: '#3c8dbc'
+        bg3: '#f9fafc'
+        bg4: '#f4f5f7'
+      skin-black-light:
+        bg1: '#fefefe'
+        bg2: '#fefefe'
+        bg3: '#f9fafc'
+        bg4: '#f4f5f7'
+      skin-purple-light:
+        bg1: '#555299'
+        bg2: '#605ca8'
+        bg3: '#f9fafc'
+        bg4: '#f4f5f7'
+      skin-green-light:
+        bg1: '#008d4c'
+        bg2: '#00a65a'
+        bg3: '#f9fafc'
+        bg4: '#f4f5f7'
+      skin-red-light:
+        bg1: '#d33724'
+        bg2: '#dd4b39'
+        bg3: '#f9fafc'
+        bg4: '#f4f5f7'
+      skin-yellow-light:
+        bg1: '#db8b0b'
+        bg2: '#f39c12'
+        bg3: '#f9fafc'
+        bg4: '#f4f5f7'
+
+    classes-background:
+      - bg-light-blue
+      - bg-aqua
+      - bg-green
+      - bg-yellow
+      - bg-red
+      - bg-gray
+      - bg-navy
+      - bg-teal
+      - bg-purple
+      - bg-orange
+      - bg-maroon
+      - bg-black
+

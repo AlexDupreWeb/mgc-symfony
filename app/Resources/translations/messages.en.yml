@@ -1,0 +1,5 @@
+mgc:
+  global:
+    
+    dashboard: "dashboard"
+    home: "home"
