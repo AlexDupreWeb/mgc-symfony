@@ -2,6 +2,7 @@
 
 namespace MGC\CoreBundle\Controller;
 
+use MGC\CoreBundle\Utils\HomeWidget;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -122,9 +123,19 @@ class DefaultController extends MGCController
 
         );
 
+        $home_widgets = array(
+            new HomeWidget(),
+            new HomeWidget(),
+            new HomeWidget(),
+            new HomeWidget()
+        );
+
+        $this->getAdminlteParams();
+
         // replace this example code with whatever you need
         return $this->render('default/home.html.twig', array(
             'home_shortcuts' => $home_shortcuts,
+            'home_widgets' => $home_widgets,
         ));
     }
 

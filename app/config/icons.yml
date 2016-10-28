@@ -17,8 +17,6 @@ parameters:
       toggles: "adminlte/dist/img/icons/icon_toggles_128x128.png"
       wiki: "adminlte/dist/img/icons/icon_wiki_128x128.png"
 
-
-
       dropbox: "adminlte/dist/img/icons/icon_dropbox_128x128.png"
       googledrive: "adminlte/dist/img/icons/icon_googledrive_128x128.png"
 

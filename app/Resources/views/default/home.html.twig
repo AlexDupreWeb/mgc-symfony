@@ -45,20 +45,19 @@
                 <div class="col-md-8">
                     <div class="row">
 
-                        {% for i in 0..3 %}
+                        {% for widget in home_widgets %}
                         <div class="col-lg-3 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-green">
+                            <div class="small-box {{ widget.getBackground() }}">
                                 <div class="inner">
-                                    <h3>150</h3>
-
-                                    <p>New Orders</p>
+                                    <h3>{{ widget.getMainValue() }}</h3>
+                                    <p>{{ widget.getMainText() }}</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-shopping-cart"></i>
+                                    <i class="{{ widget.getMainIcon() }}"></i>
                                 </div>
                                 <a href="#" class="small-box-footer">
-                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                    {{ widget.getFooterText() }} <i class="{{ widget.getFooterIcon() }}"></i>
                                 </a>
                             </div>
                         </div>

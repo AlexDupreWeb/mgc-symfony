@@ -21,4 +21,11 @@ class MGCController extends Controller
         return null;
     }
 
+    public function getAdminlteParams(){
+        $params = $this->container->getParameter('adminlte');
+
+        dump($params);
+        die();
+    }
+
 }
