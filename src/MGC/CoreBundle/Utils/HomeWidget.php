@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alexandre
- * Date: 25/10/2016
- * Time: 18:10
- */
 
 namespace MGC\CoreBundle\Utils;
-
 
 class HomeWidget
 {
@@ -18,13 +11,22 @@ class HomeWidget
     private $footer_icon;
     private $background;
 
-    public function __construct(){
+    public function __construct($value, $text, $icon, $footerText, $footerIcon, $background){
+        $this->main_value = $value;
+        $this->main_text = $text;
+        $this->main_icon = $icon;
+        $this->footer_text = $footerText;
+        $this->footer_icon = $footerIcon;
+        $this->background = $background;
+
+        /*
         $this->main_value = 160;
         $this->main_text = "Nouveaux achats";
         $this->main_icon = "fa fa-plus";
         $this->footer_text = "Plus d'infos";
         $this->footer_icon = "fa fa-arrow-circle-left";
         $this->background = "bg-orange";
+         */
     }
 
     /**

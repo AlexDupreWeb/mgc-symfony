@@ -25,7 +25,7 @@
                                         <img class="img-circle" src="{{ asset('uploads/avatars/_alexandre.png') }}" alt="Product Image">
                                     </div>
                                     <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">{{ app.user.getFname() }} {{ app.user.getSname() }}</a>
+                                        <a href="{{ url('profile') }}" class="product-title">{{ app.user.getFname() }} {{ app.user.getSname() }}</a>
                                         <span class="product-description">{{ app.user.getCompanyJob() }}</span>
                                     </div>
                                 </li>
@@ -34,7 +34,7 @@
                                         <img class="img-circle" src="{{ asset('adminlte/dist/img/icons/icon_help_128x128.png') }}" alt="Product Image">
                                     </div>
                                     <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">{{ 'mgc.global.help'|trans({}, "messages", app.request.locale)|capitalize }}</a>
+                                        <a href="{{ url('faq') }}" class="product-title">{{ 'mgc.global.help'|trans({}, "messages", app.request.locale)|capitalize }}</a>
                                         <span class="product-description">{{ 'mgc.home.a_question_we_have_the_answer'|trans({}, "messages", app.request.locale)|capitalize }}</span>
                                     </div>
                                 </li>

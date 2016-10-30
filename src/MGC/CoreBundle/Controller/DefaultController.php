@@ -33,6 +33,9 @@ class DefaultController extends MGCController
         $request->setLocale('en');
         $request->setLocale('fr');
 
+        $testeuh = $this->get('translator')->trans('mgc.global.sign_out', array(), 'messages', $request->getLocale());
+        //dump($testeuh);die();
+
         $home_shortcuts = array(
             array(
                 'title' => 'Dossier',
@@ -128,10 +131,10 @@ class DefaultController extends MGCController
         );
 
         $home_widgets = array(
-            new HomeWidget(),
-            new HomeWidget(),
-            new HomeWidget(),
-            new HomeWidget()
+            new HomeWidget(120, "Nouveau", "fa fa-plus", "Plus", "fa fa-arrow-circle-right", "bg-green"),
+            new HomeWidget(130, "Nouveau", "fa fa-plus", "Plus", "fa fa-arrow-circle-right", "bg-orange"),
+            new HomeWidget(140, "Nouveau", "fa fa-plus", "Plus", "fa fa-arrow-circle-right", "bg-red"),
+            new HomeWidget(150, "Nouveau", "fa fa-plus", "Plus", "fa fa-arrow-circle-right", "bg-blue")
         );
 
         //$this->getAdminlteParams();
@@ -171,11 +174,15 @@ class DefaultController extends MGCController
         ]);
     }
 
-    public function __call($name, $arguments)
+    /**
+     * @Route("/faq", name="faq")
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function faqAction(Request $request)
     {
-        var_dump($name);
-        var_dump($arguments);
-
-        die();
+        // replace this example code with whatever you need
+        return $this->render('default/faq.html.twig', []);
     }
 }

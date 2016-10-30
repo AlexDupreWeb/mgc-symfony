@@ -13,3 +13,6 @@ mgc:
   home:
     content_manager: "gestionnaire de contenu"
     a_question_we_have_the_answer: "une question? nous avons la réponse!"
+
+  faq:
+    questions_answers: "des questions, des réponses"

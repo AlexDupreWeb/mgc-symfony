@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                {{ 'mgc.global.help'|trans({}, "messages", app.request.locale)|capitalize }}
+                <small>{{ 'mgc.faq.questions_answers'|trans({}, "messages", app.request.locale)|capitalize }}</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="{{ url('home') }}"><i class="fa fa-home"></i> {{ 'mgc.global.home'|trans({}, "messages", app.request.locale)|capitalize }}</a></li>
+                <li class="active">{{ 'mgc.global.help'|trans({}, "messages", app.request.locale)|capitalize }}</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Your Page Content Here -->
+
+        </section>
+    </div>
+{% endblock %}
