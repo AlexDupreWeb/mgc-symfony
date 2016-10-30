@@ -2,8 +2,14 @@ mgc:
   global:
     administration: "administration"
     dashboard: "tableau de bord"
+    help: "aide"
     home: "accueil"
+    online: "connecté"
+    profile: "profil"
+    settings: "paramètres"
+    sign_out: "déconnexion"
     shortcuts: "raccourcis"
 
   home:
     content_manager: "gestionnaire de contenu"
+    a_question_we_have_the_answer: "une question? nous avons la réponse!"

@@ -137,10 +137,10 @@
                         <li class="user-body">
                             <div class="row">
                                 <div class="col-xs-6 text-center">
-                                    <a href="{{ url('profile') }}"><i class="fa fa-user"></i> Profile</a>
+                                    <a href="{{ url('profile') }}"><i class="fa fa-user"></i> {{ 'mgc.global.profile'|trans({}, "messages", app.request.locale)|capitalize }}</a>
                                 </div>
                                 <div class="col-xs-6 text-center">
-                                    <a href="{{ url('settings') }}"><i class="fa fa-cogs"></i> Paramètres</a>
+                                    <a href="{{ url('settings') }}"><i class="fa fa-cogs"></i> {{ 'mgc.global.settings'|trans({}, "messages", app.request.locale)|capitalize }}</a>
                                 </div>
                             </div>
                             <!-- /.row -->
@@ -151,7 +151,7 @@
                                 <!--<a href="#" class="btn btn-default btn-flat">Profile</a>-->
                             </div>
                             <div class="pull-right">
-                                <a href="{{ url('logout') }}" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> Sign out</a>
+                                <a href="{{ url('logout') }}" class="btn btn-default btn-flat"><i class="fa fa-sign-out"></i> {{ 'mgc.global.sign_out'|trans({}, "messages", app.request.locale)|capitalize }}</a>
                             </div>
                         </li>
                     </ul>

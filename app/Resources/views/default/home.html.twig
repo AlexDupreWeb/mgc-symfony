@@ -8,7 +8,7 @@
                 <small>{{ 'mgc.home.content_manager'|trans({}, "messages", app.request.locale)|capitalize }}</small>
             </h1>
             <ol class="breadcrumb">
-                <li class="active">{{ 'mgc.global.home'|trans({}, "messages", app.request.locale)|capitalize }}</li>
+                <li class="active"><i class="fa fa-home"></i> {{ 'mgc.global.home'|trans({}, "messages", app.request.locale)|capitalize }}</li>
             </ol>
         </section>
 
@@ -25,8 +25,8 @@
                                         <img class="img-circle" src="{{ asset('uploads/avatars/_alexandre.png') }}" alt="Product Image">
                                     </div>
                                     <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">Alexandre</a>
-                                        <span class="product-description">BLABLABLA</span>
+                                        <a href="javascript:void(0)" class="product-title">{{ app.user.getFname() }} {{ app.user.getSname() }}</a>
+                                        <span class="product-description">{{ app.user.getCompanyJob() }}</span>
                                     </div>
                                 </li>
                                 <li class="item">
@@ -34,8 +34,8 @@
                                         <img class="img-circle" src="{{ asset('adminlte/dist/img/icons/icon_help_128x128.png') }}" alt="Product Image">
                                     </div>
                                     <div class="product-info">
-                                        <a href="javascript:void(0)" class="product-title">F.A.Q</a>
-                                        <span class="product-description">Une question? Nous avons LA réponse!</span>
+                                        <a href="javascript:void(0)" class="product-title">{{ 'mgc.global.help'|trans({}, "messages", app.request.locale)|capitalize }}</a>
+                                        <span class="product-description">{{ 'mgc.home.a_question_we_have_the_answer'|trans({}, "messages", app.request.locale)|capitalize }}</span>
                                     </div>
                                 </li>
                             </ul>

@@ -7,7 +7,7 @@
             </div>
             <div class="pull-left info">
                 <p>{{ app.user.getFname() }} {{ app.user.getSname() }}</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> {{ 'mgc.global.online'|trans({}, "messages", app.request.locale)|capitalize }}</a>
             </div>
         </div>
 

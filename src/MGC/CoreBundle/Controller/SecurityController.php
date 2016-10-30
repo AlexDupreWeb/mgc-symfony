@@ -42,4 +42,15 @@ class SecurityController extends MGCController
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
     }
+
+    /**
+     * @Route("/logout", name="logout")
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function logoutAction(Request $request)
+    {
+        
+    }
 }

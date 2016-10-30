@@ -12,7 +12,6 @@ class MGCController extends Controller
 
     public function __construct() {}
 
-<<<<<<< Updated upstream
     public function getIcon($name, $theme='default'){
         $icons = $this->container->getParameter('icons');
 
@@ -32,7 +31,6 @@ class MGCController extends Controller
         die();
     }
 
-=======
     /**
      * @param ContainerInterface|null $container
      */
@@ -67,5 +65,4 @@ class MGCController extends Controller
     private function checkPermissions(){
 
     }
->>>>>>> Stashed changes
 }

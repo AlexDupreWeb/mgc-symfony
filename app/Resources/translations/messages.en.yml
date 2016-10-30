@@ -1,5 +1,15 @@
 mgc:
   global:
-    
+    administration: "administration"
     dashboard: "dashboard"
+    help: "help"
     home: "home"
+    online: "online"
+    profile: "profile"
+    settings: "settings"
+    sign_out: "sign out"
+    shortcuts: "shortcuts"
+
+  home:
+    content_manager: "content manager"
+    a_question_we_have_the_answer: "a question? we have the answer!"

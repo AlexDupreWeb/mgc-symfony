@@ -134,7 +134,7 @@ class DefaultController extends MGCController
             new HomeWidget()
         );
 
-        $this->getAdminlteParams();
+        //$this->getAdminlteParams();
 
         // replace this example code with whatever you need
         return $this->render('default/home.html.twig', array(
