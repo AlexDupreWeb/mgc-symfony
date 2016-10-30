@@ -75,6 +75,14 @@
 }
 
 /* ===== =====
+    LOGIN
+===== ===== */
+.login-page .login-box .login-box-body .checkbox input{
+    margin-left: 0;
+    position: relative;
+}
+
+/* ===== =====
     GOOGLE PREVIEW
 ===== ===== */
 #seo-google-preview{

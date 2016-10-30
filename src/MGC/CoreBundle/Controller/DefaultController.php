@@ -15,6 +15,8 @@ class DefaultController extends MGCController
      */
     public function indexAction(Request $request)
     {
+        if(!is_null($this->redirect)){ return $this->redirect; }
+
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
@@ -26,6 +28,8 @@ class DefaultController extends MGCController
      */
     public function homeAction(Request $request)
     {
+        if(!is_null($this->redirect)){ return $this->redirect; }
+
         $request->setLocale('en');
         $request->setLocale('fr');
 
@@ -137,39 +141,6 @@ class DefaultController extends MGCController
             'home_shortcuts' => $home_shortcuts,
             'home_widgets' => $home_widgets,
         ));
-    }
-
-    /**
-     * @Route("/login", name="login")
-     */
-    public function loginAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/login.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
-    }
-
-    /**
-     * @Route("/lockscreen", name="lockscreen")
-     */
-    public function lockscreenAction(Request $request)
-    {
-        // replace this example code with whatever you need
-        return $this->render('default/lockscreen.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
-    }
-
-    /**
-     * @Route("/logout", name="logout")
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function logoutAction(Request $request)
-    {
-        echo 'logout ok -> redirect';
     }
 
     /**

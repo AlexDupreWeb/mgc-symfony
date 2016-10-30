@@ -3,15 +3,19 @@
 namespace MGC\AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
  *
  * @ORM\Table(name="mgc4_2_user")
  * @ORM\Entity(repositoryClass="MGC\AdminBundle\Repository\UserRepository")
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="login", message="Login already taken")
  */
-class User
-{
+class User implements UserInterface {
     /**
      * @var int
      *
@@ -25,6 +29,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $login;
 
@@ -39,6 +44,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 
@@ -66,7 +73,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="avatar", type="string", length=255)
+     * @ORM\Column(name="avatar", type="string", length=255, nullable=true)
      */
     private $avatar;
 
@@ -353,7 +360,7 @@ class User
      *
      * @return User
      */
-    public function setDateBirth($dateBirth)
+    public function setDateBirth(\DateTime $dateBirth)
     {
         $this->dateBirth = $dateBirth;
 
@@ -377,7 +384,7 @@ class User
      *
      * @return User
      */
-    public function setDateCreated($dateCreated)
+    public function setDateCreated(\DateTime $dateCreated)
     {
         $this->dateCreated = $dateCreated;
 
@@ -401,7 +408,7 @@ class User
      *
      * @return User
      */
-    public function setDateUpdated($dateUpdated)
+    public function setDateUpdated(\DateTime $dateUpdated)
     {
         $this->dateUpdated = $dateUpdated;
 
@@ -464,5 +471,36 @@ class User
     public function getOrdre()
     {
         return $this->ordre;
+    }
+
+
+    /**
+     * Implements method (Get roles)
+     */
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    /**
+     * Implements method (Get salt)
+     */
+    public function getSalt()
+    {
+    }
+
+    /**
+     * Implements method (Get username)
+     */
+    public function getUsername()
+    {
+        return $this->login;
+    }
+
+    /**
+     * Implements method (Erase credentials)
+     */
+    public function eraseCredentials()
+    {
     }
 }

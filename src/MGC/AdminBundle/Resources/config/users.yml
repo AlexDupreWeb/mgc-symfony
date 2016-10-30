@@ -1,0 +1,28 @@
+users:
+  admin:
+
+  demo:
+    -
+      login: 'admin'
+      password: null
+      email: 'admin@alexandre-dupre.fr'
+      gender: 'male'
+      sname: 'Golade'
+      fname: 'Larry'
+      avatar: null
+      id_company: null
+      company_job: null
+      date_birth: null
+      active: true
+    -
+      login: 'alex'
+      password: null
+      email: 'alexandre@alexandre-dupre.fr'
+      gender: 'male'
+      sname: 'Dupre'
+      fname: 'Alexandre'
+      avatar: null
+      id_company: null
+      company_job: null
+      date_birth: '1989-02-14'
+      active: true
