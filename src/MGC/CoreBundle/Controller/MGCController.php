@@ -30,7 +30,7 @@ class MGCController extends Controller
         dump($params);
         die();
     }
-
+    
     /**
      * @param ContainerInterface|null $container
      */
