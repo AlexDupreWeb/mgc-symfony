@@ -69,25 +69,21 @@
 
             <div class="row">
 
-                {% for shortcut in home_shortcuts %}
+                {% for thumbnail in home_thumbnails %}
                     <div class="col-xs-6 col-sm-4 col-md-2">
                         <div class="thumbnail home-thumbnail">
-                            <img src="{{ shortcut.icon }}" alt="{{ shortcut.title }}" />
+                            {% if thumbnail.getMainPictureType() == 'image' and thumbnail.getMainImage() is not empty %}
+                                <img src="{{ thumbnail.getMainImage() }}" alt="{{ thumbnail.getMainText() }}" />
+                            {% elseif thumbnail.getMainPictureType() == 'icon' %}
+                                <i class="{{ thumbnail.getMainIcon() }}"></i>
+                            {% endif %}
+
                             <div class="caption">
-                                <a href="{{ shortcut.link }}" class="btn btn-default btn-block" role="button">{{ shortcut.title }}</a>
+                                <a href="{{ thumbnail.getMainLink() }}" class="btn btn-default btn-block" role="button">{{ thumbnail.getMainText() }}</a>
                             </div>
                         </div>
                     </div>
                 {% endfor %}
-
-                <div class="col-xs-6 col-sm-4 col-md-2">
-                    <div class="thumbnail home-thumbnail">
-                        <i class="fa fa-pencil"></i>
-                        <div class="caption">
-                            <a href="#" class="btn btn-default btn-block" role="button">Test</a>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 

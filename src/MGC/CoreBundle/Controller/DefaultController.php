@@ -2,6 +2,7 @@
 
 namespace MGC\CoreBundle\Controller;
 
+use MGC\CoreBundle\Utils\HomeThumbnail;
 use MGC\CoreBundle\Utils\HomeWidget;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -36,98 +37,30 @@ class DefaultController extends MGCController
         $testeuh = $this->get('translator')->trans('mgc.global.sign_out', array(), 'messages', $request->getLocale());
         //dump($testeuh);die();
 
-        $home_shortcuts = array(
-            array(
-                'title' => 'Dossier',
-                'icon' => $this->getIcon('folder'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Settings',
-                'icon' => $this->getIcon('cog'),
-                'link' => '#',
-            ),
+        $home_thumbnails = array(
+            new HomeThumbnail('Folder', 'fa fa-folder', '', '#'),
 
-            array(
-                'title' => 'Developer',
-                'icon' => $this->getIcon('terminal'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Note',
-                'icon' => $this->getIcon('note'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Help',
-                'icon' => $this->getIcon('help'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Dictionary',
-                'icon' => $this->getIcon('dictionary'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Contacts',
-                'icon' => $this->getIcon('addressbook'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Wiki',
-                'icon' => $this->getIcon('wiki'),
-                'link' => '#',
-            ),
+            new HomeThumbnail('Terminal', 'fa fa-terminal', $this->getIcon('terminal'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Folder', 'fa fa-folder', $this->getIcon('folder'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Settings', 'fa fa-cogs', $this->getIcon('cog'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
 
-            array(
-                'title' => 'Diagram',
-                'icon' => $this->getIcon('diagram'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Sketchbook',
-                'icon' => $this->getIcon('sketchbook'),
-                'link' => '#',
-            ),
+            new HomeThumbnail('Note', '', $this->getIcon('note'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Help', '', $this->getIcon('help'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Contacts', '', $this->getIcon('addressbook'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
 
-            array(
-                'title' => 'Dropbox',
-                'icon' => $this->getIcon('dropbox'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Google Drive',
-                'icon' => $this->getIcon('googledrive'),
-                'link' => '#',
-            ),
+            new HomeThumbnail('Wiki', '', $this->getIcon('wiki'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Diagram', '', $this->getIcon('diagram'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Sketchbook', '', $this->getIcon('sketchbook'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
 
-            array(
-                'title' => 'Cursor',
-                'icon' => $this->getIcon('cursor'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Geolocation',
-                'icon' => $this->getIcon('geolocation'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Picture',
-                'icon' => $this->getIcon('picture'),
-                'link' => '#',
-            ),
-            array(
-                'title' => 'Toggles',
-                'icon' => $this->getIcon('toggles'),
-                'link' => '#',
-            ),
+            new HomeThumbnail('Dropbox', '', $this->getIcon('dropbox'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Google Drive', '', $this->getIcon('googledrive'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Cursor', '', $this->getIcon('cursor'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
 
-            array(
-                'title' => 'Test',
-                'icon' => $this->getIcon('test'),
-                'link' => '#',
-            ),
+            new HomeThumbnail('Geolocation', '', $this->getIcon('geolocation'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Picture', '', $this->getIcon('picture'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+            new HomeThumbnail('Toggles', '', $this->getIcon('toggles'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
 
+            new HomeThumbnail('Dictionary', '', $this->getIcon('dictionary'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
         );
 
         $home_widgets = array(
@@ -141,7 +74,7 @@ class DefaultController extends MGCController
 
         // replace this example code with whatever you need
         return $this->render('default/home.html.twig', array(
-            'home_shortcuts' => $home_shortcuts,
+            'home_thumbnails' => $home_thumbnails,
             'home_widgets' => $home_widgets,
         ));
     }
