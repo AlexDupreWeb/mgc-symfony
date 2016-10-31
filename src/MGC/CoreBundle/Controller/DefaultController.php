@@ -88,9 +88,7 @@ class DefaultController extends MGCController
     public function profileAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/home.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
+        return $this->render('default/profile.html.twig', []);
     }
 
     /**
@@ -102,9 +100,7 @@ class DefaultController extends MGCController
     public function settingsAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/home.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
-        ]);
+        return $this->render('default/settings.html.twig', []);
     }
 
     /**
