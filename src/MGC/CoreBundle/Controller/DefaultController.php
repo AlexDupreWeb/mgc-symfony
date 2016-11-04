@@ -70,12 +70,11 @@ class DefaultController extends MGCController
             new HomeWidget(150, "Nouveau", "fa fa-plus", "Plus", "fa fa-arrow-circle-right", "bg-blue")
         );
 
-        //$this->getAdminlteParams();
-
         // replace this example code with whatever you need
         return $this->render('default/home.html.twig', array(
             'home_thumbnails' => $home_thumbnails,
             'home_widgets' => $home_widgets,
+            'twig_service' => $this->get('assets.packages')->getUrl('uploads/avatars/jesus.png'),
         ));
     }
 
