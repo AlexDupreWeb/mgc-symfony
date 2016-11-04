@@ -2,6 +2,7 @@
 
 namespace MGC\AdminBundle\Controller;
 
+use MGC\CoreBundle\Controller\MGCController;
 use MGC\CoreBundle\Utils\Pagination;
 use MGC\CoreBundle\Utils\PaginationCleaner;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\HttpFoundation\Request;
 
-class RoleController extends Controller
+class RoleController extends MGCController
 {
     
     private $filtersFields = array(

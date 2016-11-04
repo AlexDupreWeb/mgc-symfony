@@ -2,12 +2,13 @@
 
 namespace MGC\AdminBundle\Controller;
 
+use MGC\CoreBundle\Controller\MGCController;
 use MGC\Modules\Admin\UserBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
 
-class UserController extends Controller
+class UserController extends MGCController
 {
     /**
      * @Route("/admin/users/", name="admin-mgc-users")
