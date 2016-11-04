@@ -4,6 +4,7 @@ mgc:
     dashboard: "tableau de bord"
     help: "aide"
     home: "accueil"
+    my_shortcuts: "mes raccourcis"
     online: "connecté"
     profile: "profil"
     settings: "paramètres"

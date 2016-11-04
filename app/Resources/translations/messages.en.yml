@@ -4,6 +4,7 @@ mgc:
     dashboard: "dashboard"
     help: "help"
     home: "home"
+    my_shortcuts: "my shortcuts"
     online: "online"
     profile: "profile"
     settings: "settings"
@@ -13,3 +14,6 @@ mgc:
   home:
     content_manager: "content manager"
     a_question_we_have_the_answer: "a question? we have the answer!"
+
+  faq:
+    questions_answers: "questions, answers"

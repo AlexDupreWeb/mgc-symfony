@@ -12,15 +12,49 @@
         </div>
 
         <ul class="sidebar-menu">
+            <li class="header">{{ 'mgc.global.shortcuts'|trans({}, "messages", app.request.locale)|capitalize }}</li>
+            <li>
+                <a href="{{ url('home') }}">
+                    <i class="fa fa-home"></i> <span>{{ 'mgc.global.home'|trans({}, "messages", app.request.locale)|capitalize }}</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-star"></i> <span>{{ 'mgc.global.my_shortcuts'|trans({}, "messages", app.request.locale)|capitalize }}</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                </ul>
+            </li>
+
+            <li class="treeview active">
+                <a href="#">
+                    <i class="fa fa-wrench"></i> <span>{{ 'mgc.global.administration'|trans({}, "messages", app.request.locale)|capitalize }}</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu menu-open">
+                    <li><a href="#">Link in level 2</a></li>
+                    <li><a href="#">Link in level 2</a></li>
+
+                    <li><a href="{{ url('admin-mgc-users') }}">Utilisateurs</a></li>
+                    <li><a href="#">Groupes</a></li>
+                    <li><a href="#">Modules</a></li>
+                </ul>
+            </li>
+
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
+            <li><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
             <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="#">Link in level 2</a></li>
