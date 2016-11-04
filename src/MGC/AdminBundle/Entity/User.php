@@ -125,8 +125,16 @@ class User implements UserInterface {
      * @ORM\Column(name="ordre", type="integer", nullable=true)
      */
     private $ordre;
-    
+
+    /**
+     * @var string
+     */
     private $avatarPath;
+
+    /**
+     * @var string
+     */
+    private $avatarAssetsPath;
 
 
     /**
@@ -490,6 +498,27 @@ class User implements UserInterface {
     public function setAvatarPath($avatarPath)
     {
         $this->avatarPath = $avatarPath;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatarAssetsPath()
+    {
+        return $this->avatarAssetsPath;
+    }
+
+    /**
+     * @param string $avatarAssetsPath
+     * @return User
+     */
+    public function setAvatarAssetsPath($avatarAssetsPath)
+    {
+        $this->avatarAssetsPath = $avatarAssetsPath;
+
+        return $this;
     }
 
     /**

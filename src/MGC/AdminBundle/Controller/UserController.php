@@ -17,6 +17,8 @@ class UserController extends MGCController
     {
         $users = $this->getDoctrine()->getRepository('AdminBundle:User')->findAll();
 
+        $users = $this->usersAvatarService->setUserAvatarAssetsFromArray($users);
+
         return $this->render('AdminBundle:User:index.html.twig', array(
             'users' => $users,
         ));

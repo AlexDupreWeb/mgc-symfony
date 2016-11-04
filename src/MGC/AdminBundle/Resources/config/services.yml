@@ -2,3 +2,9 @@ services:
 #    admin.example:
 #        class: MGC\AdminBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+    mgc.admin.service.users.avatar:
+        class: MGC\AdminBundle\Services\Users\AvatarService
+        arguments:
+            - '@service_container'
+            - '@doctrine.orm.entity_manager'
+            - '@assets.packages'
