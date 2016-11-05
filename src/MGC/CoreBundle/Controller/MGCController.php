@@ -48,6 +48,7 @@ class MGCController extends Controller
     public function setContainer(ContainerInterface $container = null) {
         parent::setContainer($container);
         $this->usersAvatarService = $this->get('mgc.admin.service.users.avatar');
+        $this->usersAvatarService->setUserAvatarAssetsForUserSession();
         
         $this->redirect = $this->checkRedirect();
         //$this->checkPermissions();

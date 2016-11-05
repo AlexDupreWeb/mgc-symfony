@@ -87,4 +87,10 @@ class AvatarService
         return $array;
     }
 
+    public function setUserAvatarAssetsForUserSession()
+    {
+        $userSession = $this->container->get('security.token_storage')->getToken()->getUser();
+        $userSession = $this->setUserAvatarAssets($userSession);
+    }
+
 }
