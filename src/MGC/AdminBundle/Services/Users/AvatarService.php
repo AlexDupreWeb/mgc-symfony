@@ -5,6 +5,7 @@ namespace MGC\AdminBundle\Services\Users;
 use Doctrine\ORM\EntityManager;
 use MGC\AdminBundle\Entity\User;
 use Symfony\Component\Asset\Packages;
+use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\DependencyInjection\Container;
 
 class AvatarService
@@ -90,7 +91,15 @@ class AvatarService
     public function setUserAvatarAssetsForUserSession()
     {
         $userSession = $this->container->get('security.token_storage')->getToken()->getUser();
-        $userSession = $this->setUserAvatarAssets($userSession);
+
+        if(is_a($userSession,'MGC\AdminBundle\Entity\User')){
+            $userSession = $this->setUserAvatarAssets($userSession);
+        }elseif(is_null($userSession)) {
+            throw new Exception('Houston, we have a problem... User in session is null!');
+        }else{
+            return;
+        }
+
     }
 
 }
