@@ -2,13 +2,14 @@
 
 namespace MGC\DeveloperBundle\Controller;
 
+use MGC\CoreBundle\Controller\MGCController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class DefaultController extends Controller
+class DefaultController extends MGCController
 {
     /**
-     * @Route("/mod-developer/")
+     * @Route("/developer/")
      */
     public function indexAction()
     {
@@ -16,7 +17,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/mod-developer/openstreetmap", name="dev-osm")
+     * @Route("/developer/openstreetmap", name="dev-osm")
      */
     public function openStreetMapAction()
     {
