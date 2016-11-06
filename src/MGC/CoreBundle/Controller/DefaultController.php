@@ -73,8 +73,7 @@ class DefaultController extends MGCController
         // replace this example code with whatever you need
         return $this->render('default/home.html.twig', array(
             'home_thumbnails' => $home_thumbnails,
-            'home_widgets' => $home_widgets,
-            'twig_service' => $this->get('assets.packages')->getUrl('uploads/avatars/jesus.png'),
+            'home_widgets' => $home_widgets
         ));
     }
 
