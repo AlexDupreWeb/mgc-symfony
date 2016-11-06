@@ -35,6 +35,18 @@ class MGCController extends Controller
         return null;
     }
 
+    public function getUrlFromRoute($name, $params=array()){
+        $router = $this->container->get('router');
+
+        if($router->getRouteCollection()->get($name)){
+            $url = $this->get('router')->generate($name, $params);
+        }else{
+            $url = '#';
+        }
+
+        return $url;
+    }
+
     public function getAdminlteParams(){
         $params = $this->container->getParameter('adminlte');
 

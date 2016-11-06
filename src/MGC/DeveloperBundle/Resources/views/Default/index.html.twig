@@ -19,19 +19,25 @@
             <!-- Your Page Content Here -->
 
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
-                    <a href="{{ url('dev-osm') }}">
-                        <div class="info-box">
-                            <span class="info-box-icon bg-gray-light">
-                                <img src="{{ asset('openstreetmap/img/logo-osm.svg') }}" alt="OpenStreetMap">
-                            </span>
-                            <div class="info-box-content text-black">
-                                <span class="info-box-text">OpenStreetMap</span>
-                                <p>How to use it?</p>
+                {% for thumbnail in developer_thumbnails %}
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <a href="{{ thumbnail.getMainLink() }}">
+                            <div class="info-box">
+                                <span class="info-box-icon bg-gray-light">
+                                    {% if thumbnail.getMainPictureType() == 'image' and thumbnail.getMainImage() is not empty %}
+                                        <img src="{{ thumbnail.getMainImage() }}" alt="{{ thumbnail.getMainText() }}" />
+                                    {% elseif thumbnail.getMainPictureType() == 'icon' %}
+                                        <i class="{{ thumbnail.getMainIcon() }}"></i>
+                                    {% endif %}
+                                </span>
+                                <div class="info-box-content text-black">
+                                    <span class="info-box-text">{{ thumbnail.getMainText() }}</span>
+                                    <p>{{ thumbnail.getMainDescription() }}</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
 
             <!-- -->
