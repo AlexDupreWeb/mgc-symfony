@@ -1,0 +1,19 @@
+{% block javascripts %}
+<script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('.ckeditor-default').each(function(){
+            var cke_config = "{{ asset('ckeditor/config-default-fr.js') }}";
+
+            if($(this).attr('data-cke-config-language') == 'en'){
+                cke_config = "{{ asset('ckeditor/config-default-en.js') }}";
+            }
+
+            CKEDITOR.replace( $(this).attr('id'),{
+                customConfig: cke_config
+            });
+        });
+    });
+</script>
+{% endblock %}
