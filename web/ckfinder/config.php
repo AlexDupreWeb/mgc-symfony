@@ -17,6 +17,10 @@ ini_set('display_errors', 0);
 // error_reporting(E_ALL);
 // ini_set('display_errors', 1);
 
+/*============================ MGC Vars ===============================================*/
+
+$mgc_ckf_upload_path = __DIR__.'/../../web/uploads/';
+
 /*============================ General Settings =======================================*/
 // http://docs.cksource.com/ckfinder3-php/configuration.html
 
@@ -26,7 +30,7 @@ $config = array();
 // http://docs.cksource.com/ckfinder3-php/configuration.html#configuration_options_authentication
 
 $config['authentication'] = function () {
-    return false;
+    return true;
 };
 
 /*============================ License Key ============================================*/
@@ -40,10 +44,10 @@ $config['licenseKey']  = '';
 
 $config['privateDir'] = array(
     'backend' => 'default',
-    'tags'   => '.ckfinder/tags',
-    'logs'   => '.ckfinder/logs',
-    'cache'  => '.ckfinder/cache',
-    'thumbs' => '.ckfinder/cache/thumbs',
+    'tags'   => 'ckf/tags',
+    'logs'   => 'ckf/logs',
+    'cache'  => 'ckf/cache',
+    'thumbs' => 'ckf/cache/thumbs',
 );
 
 /*============================ Images and Thumbnails ==================================*/
@@ -66,7 +70,7 @@ $config['images'] = array(
 $config['backends'][] = array(
     'name'         => 'default',
     'adapter'      => 'local',
-    'baseUrl'      => '/ckfinder/userfiles/',
+    'baseUrl'      => $mgc_ckf_upload_path,
 //  'root'         => '', // Can be used to explicitly set the CKFinder user files directory.
     'chmodFiles'   => 0777,
     'chmodFolders' => 0755,
@@ -91,7 +95,16 @@ $config['resourceTypes'][] = array(
     'name'              => 'Images',
     'directory'         => 'images',
     'maxSize'           => 0,
-    'allowedExtensions' => 'bmp,gif,jpeg,jpg,png',
+    'allowedExtensions' => 'gif,jpeg,jpg,png',
+    'deniedExtensions'  => '',
+    'backend'           => 'default'
+);
+
+$config['resourceTypes'][] = array(
+    'name'              => 'Avatars',
+    'directory'         => 'avatars',
+    'maxSize'           => 0,
+    'allowedExtensions' => 'gif,jpeg,jpg,png',
     'deniedExtensions'  => '',
     'backend'           => 'default'
 );
