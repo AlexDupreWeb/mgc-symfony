@@ -14,6 +14,7 @@ class DefaultController extends MGCController
      */
     public function indexAction()
     {
+        if(!is_null($this->redirect)){ return $this->redirect; }
 
         $developer_thumbnails = array(
             new DeveloperThumbnail('OpenStreetMap','How to use it?','','/openstreetmap/img/logo-osm.svg',$this->getUrlFromRoute('developer-osm'), DeveloperThumbnail::PICTURE_TYPE_IMAGE),
@@ -30,6 +31,8 @@ class DefaultController extends MGCController
      */
     public function openStreetMapAction()
     {
+        if(!is_null($this->redirect)){ return $this->redirect; }
+
         $array = array(
             array('lat' => '49.4431','long' => '1.0993','text' => '<b>Test</b><br>Rouen'),
             array('lat' => '49.421235','long' => '1.075605','text' => 'Test'),
@@ -45,6 +48,8 @@ class DefaultController extends MGCController
      */
     public function ckeditorAction()
     {
+        if(!is_null($this->redirect)){ return $this->redirect; }
+
         return $this->render('DeveloperBundle:Default:ckeditor.html.twig');
     }
 
@@ -53,6 +58,8 @@ class DefaultController extends MGCController
      */
     public function ckfinderAction()
     {
+        if(!is_null($this->redirect)){ return $this->redirect; }
+        
         return $this->render('DeveloperBundle:Default:ckfinder.html.twig');
     }
 }
