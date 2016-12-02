@@ -12,3 +12,8 @@ developer:
     resource: "@DeveloperBundle/Controller/"
     type:     annotation
     prefix:   /
+
+todo:
+    resource: "@TodoBundle/Controller/"
+    type:     annotation
+    prefix:   /

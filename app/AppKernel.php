@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new MGC\CoreBundle\CoreBundle(),
             new MGC\AdminBundle\AdminBundle(),
             new MGC\DeveloperBundle\DeveloperBundle(),
+            new MGC\TodoBundle\TodoBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
