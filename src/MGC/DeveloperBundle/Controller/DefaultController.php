@@ -59,7 +59,17 @@ class DefaultController extends MGCController
     public function ckfinderAction()
     {
         if(!is_null($this->redirect)){ return $this->redirect; }
-        
+
         return $this->render('DeveloperBundle:Default:ckfinder.html.twig');
+    }
+
+    /**
+     * @Route("/developer/responsivefilemanager", name="developer-responsivefilemanager")
+     */
+    public function responsivefilemanagerAction()
+    {
+        if(!is_null($this->redirect)){ return $this->redirect; }
+
+        return $this->render('DeveloperBundle:Default:responsivefilemanager.html.twig');
     }
 }

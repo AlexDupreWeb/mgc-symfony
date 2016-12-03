@@ -31,7 +31,11 @@
 
 # Assets and user uploads
 /web/bundles/
+/web/bundles/*
 /web/uploads/
+/web/uploads/*
+/web/thumbs/
+/web/thumbs/*
 
 # Assets managed by Bower
 /web/assets/vendor/
