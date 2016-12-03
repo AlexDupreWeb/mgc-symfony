@@ -4,10 +4,30 @@ if (session_id() == '') session_start();
 mb_internal_encoding('UTF-8');
 date_default_timezone_set('Europe/Rome');
 
+/*
+|--------------------------------------------------------------------------
+| MGC Vars
+|--------------------------------------------------------------------------
+|
+| to configure responsive file manager
+|
+*/
+
 $mgc_web_path = __DIR__.'/../../../';
 $mgc_upload_path = $mgc_web_path.'uploads/';
 
 $mgc_thumb_path = '../../thumbs/';
+
+$mgc_upload_dir = '/uploads/';
+$mgc_thumb_dir = '/thumbs/';
+
+/*
+|--------------------------------------------------------------------------
+| MGC Security
+|--------------------------------------------------------------------------
+*/
+
+//SECU
 
 /*
 |--------------------------------------------------------------------------
@@ -73,7 +93,7 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => '/uploads/',
+	'upload_dir' => $mgc_upload_dir,
 	/*
 	|--------------------------------------------------------------------------
 	| relative path from filemanager folder to upload folder
@@ -114,7 +134,7 @@ $config = array(
 	/* --------------------------------------------------------------------------
 	| path from ftp_base_folder to base of thumbs folder with start and final |
 	|--------------------------------------------------------------------------*/
-	'ftp_thumbs_dir' => '/thumbs/',
+	'ftp_thumbs_dir' => $mgc_thumb_dir,
 	'ftp_ssl' => false,
 	'ftp_port' => 21,
 

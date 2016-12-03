@@ -69,7 +69,16 @@ class DefaultController extends MGCController
     public function responsivefilemanagerAction()
     {
         if(!is_null($this->redirect)){ return $this->redirect; }
+        
+        $params_for_input_filemanager = array(
+            array( 'lang' => 'fr_FR', 'field_id' => 'rfm1', 'type' => 0, 'label_comment' => 'all' ),
+            array( 'lang' => 'fr_FR', 'field_id' => 'rfm2', 'type' => 1, 'label_comment' => 'image' ),
+            array( 'lang' => 'fr_FR', 'field_id' => 'rfm3', 'type' => 3, 'label_comment' => 'video' ),
+            array( 'lang' => 'fr_FR', 'field_id' => 'rfm4', 'type' => 2, 'label_comment' => 'file' ),
+        );
 
-        return $this->render('DeveloperBundle:Default:responsivefilemanager.html.twig');
+        return $this->render('DeveloperBundle:Default:responsivefilemanager.html.twig', array(
+            'params_for_input_filemanager' => $params_for_input_filemanager
+        ));
     }
 }

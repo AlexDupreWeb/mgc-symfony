@@ -11,7 +11,11 @@
             }
 
             CKEDITOR.replace( $(this).attr('id'),{
-                customConfig: cke_config
+                customConfig: cke_config,
+
+                filebrowserBrowseUrl : '{{ asset('responsive_filemanager/filemanager/dialog.php') }}?type=2&editor=ckeditor&fldr=',
+                filebrowserUploadUrl : '{{ asset('responsive_filemanager/filemanager/dialog.php') }}?type=2&editor=ckeditor&fldr=',
+                filebrowserImageBrowseUrl : '{{ asset('responsive_filemanager/filemanager/dialog.php') }}?type=1&editor=ckeditor&fldr='
             });
         });
     });
