@@ -61,6 +61,8 @@ class DefaultController extends MGCController
             new HomeThumbnail('Toggles', '', $this->getIcon('toggles'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
 
             new HomeThumbnail('Dictionary', '', $this->getIcon('dictionary'), '#', HomeThumbnail::PICTURE_TYPE_IMAGE),
+
+            new HomeThumbnail('Developer', 'fa fa-code', '', $this->getUrlFromRoute('developer')),
         );
 
         $home_widgets = array(

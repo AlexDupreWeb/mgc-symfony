@@ -19,11 +19,11 @@ class DefaultController extends MGCController
         $developer_thumbnails = array(
             new DeveloperThumbnail('OpenStreetMap','How to use it?','','/openstreetmap/img/logo-osm.svg',$this->getUrlFromRoute('developer-osm'), DeveloperThumbnail::PICTURE_TYPE_IMAGE),
             new DeveloperThumbnail('CKEditor','Wysiwyg editor','fa fa-pencil-square-o','',$this->getUrlFromRoute('developer-ckeditor')),
-            new DeveloperThumbnail('CKFinder','File manager','fa fa-upload','',$this->getUrlFromRoute('developer-ckfinder')),
+            new DeveloperThumbnail('Responsive File Manager','File manager','fa fa-upload','',$this->getUrlFromRoute('developer-responsivefilemanager')),
         );
-        return $this->render('DeveloperBundle:Default:index.html.twig', [
+        return $this->render('DeveloperBundle:Default:index.html.twig', array(
             'developer_thumbnails' => $developer_thumbnails,
-        ]);
+        ));
     }
 
     /**
@@ -51,16 +51,6 @@ class DefaultController extends MGCController
         if(!is_null($this->redirect)){ return $this->redirect; }
 
         return $this->render('DeveloperBundle:Default:ckeditor.html.twig');
-    }
-
-    /**
-     * @Route("/developer/ckfinder", name="developer-ckfinder")
-     */
-    public function ckfinderAction()
-    {
-        if(!is_null($this->redirect)){ return $this->redirect; }
-
-        return $this->render('DeveloperBundle:Default:ckfinder.html.twig');
     }
 
     /**
