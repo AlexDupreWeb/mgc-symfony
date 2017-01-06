@@ -461,6 +461,16 @@ class User implements UserInterface {
     }
 
     /**
+     * Is active
+     *
+     * @return bool
+     */
+    public function isActive()
+    {
+        return $this->getActive();
+    }
+
+    /**
      * Set ordre
      *
      * @param integer $ordre
