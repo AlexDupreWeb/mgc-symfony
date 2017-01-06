@@ -1,9 +1,9 @@
 <div class="box box-primary">
     <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" alt="{{ user.fname }}" src="{{ asset('uploads/avatars/_default_man.png') }}">
-        <h3 class="profile-username text-center">{{ user.fname }} {{ user.sname }}</h3>
-        <p class="text-muted text-center">{{ user.companyjob }}</p>
-        <p class="text-center"><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+        <img class="profile-user-img img-responsive img-circle" alt="{{ user.getFname() }}" src="{{ asset(user.getAvatarAssetsPath()) }}">
+        <h3 class="profile-username text-center">{{ user.getFname() }} {{ user.getSname() }}</h3>
+        <p class="text-muted text-center">{{ user.getCompanyjob() }}</p>
+        <p class="text-center"><a href="mailto:{{ user.getEmail() }}">{{ user.getEmail() }}</a></p>
         <ul class="list-group list-group-unbordered">
             <li class="list-group-item">
                 <b>Compte</b>
@@ -35,16 +35,17 @@
             </li>
 
         </ul>
-        <a class="btn btn-default btn-block" href="{{ url('admin-mgc-users') }}edit/{{ user.id }}">
+
+        <a class="btn btn-default btn-block {% if app.request.attributes.get('_route') == 'mgc_admin_user_edit' %}disabled{% endif %}" href="{{ url('mgc_admin_user_edit', { 'id': user.getId() }) }}">
             <i class="fa fa-pencil"></i> Modifier
         </a>
-        <a class="btn btn-default btn-block" href="{{ url('admin-mgc-users') }}timeline/{{ user.id }}">
+        <a class="btn btn-default btn-block {% if app.request.attributes.get('_route') == 'mgc_admin_user_timeline' %}disabled{% endif %}" href="{{ url('mgc_admin_user_timeline', { 'id': user.getId() }) }}">
             <i class="fa fa-calendar"></i> Historique
         </a>
-        <a class="btn btn-default btn-block" href="{{ url('admin-mgc-users') }}stats/{{ user.id }}">
+        <a class="btn btn-default btn-block {% if app.request.attributes.get('_route') == 'mgc_admin_user_stats' %}disabled{% endif %}" href="{{ url('mgc_admin_user_stats', { 'id': user.getId() }) }}">
             <i class="fa fa-area-chart"></i> Statistiques
         </a>
-        <a class="btn btn-default btn-block" href="{{ url('admin-mgc-users') }}sessions/{{ user.id }}">
+        <a class="btn btn-default btn-block {% if app.request.attributes.get('_route') == 'mgc_admin_user_sessions' %}disabled{% endif %}" href="{{ url('mgc_admin_user_sessions', { 'id': user.getId() }) }}">
             <i class="fa fa-desktop"></i> Appareils
         </a>
 
