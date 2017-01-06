@@ -3,6 +3,8 @@
 namespace MGC\CoreBundle\Controller;
 
 use MGC\AdminBundle\Services\AvatarService;
+use MGC\AdminBundle\Services\Permissions\PermissionService;
+use MGC\CoreBundle\Services\ParametersService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -12,9 +14,19 @@ use Symfony\Component\HttpFoundation\Response;
 class MGCController extends Controller
 {
     /**
+     * @var ParametersService
+     */
+    protected $parametersService;
+
+    /**
      * @var AvatarService
      */
     protected $usersAvatarService;
+
+    /**
+     * @var PermissionService
+     */
+    protected $permissionService;
 
     /**
      * @var string
@@ -59,8 +71,12 @@ class MGCController extends Controller
      */
     public function setContainer(ContainerInterface $container = null) {
         parent::setContainer($container);
+        $this->parametersService = $this->get('mgc.core.service.parameters');
+
         $this->usersAvatarService = $this->get('mgc.admin.service.users.avatar');
         $this->usersAvatarService->setUserAvatarAssetsForUserSession();
+
+        $this->permissionService = $this->get('mgc.admin.service.permission');
         
         $this->redirect = $this->checkRedirect();
         //$this->checkPermissions();
@@ -76,11 +92,8 @@ class MGCController extends Controller
      * @return Response A Response instance
      */
     protected function render($view, array $parameters = array(), Response $response = null) {
-        // Add theme on $views
-        //$view = 'themes/'.$this->mpTheme."/".$view;
-        //$parameters['mp_site_theme'] = $this->mpTheme;
 
-        $parameters['toto'] = 'coucou de toto';
+        //$parameters['toto'] = 'coucou de toto';
 
         if ($this->container->has('templating')) {
             return $this->container->get('templating')->renderResponse($view, $parameters, $response);
