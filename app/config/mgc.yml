@@ -1,0 +1,7 @@
+parameters:
+  mgc:
+    avatars_folder: 'uploads/avatars/'
+    user:
+      gender:
+        male: "male"
+        female: "female"

@@ -43,12 +43,14 @@ class AvatarService
         $this->container = $container;
         $this->entityManager = $entityManager;
         $this->twigService = $twigService;
+
+        $mgc_params = $this->container->getParameter('mgc');
         
         $this->avatarsFolderPath = $this->container->getParameter('kernel.root_dir');
         $this->avatarsFolderPath .= '/../web/';
-        $this->avatarsFolderPath .= $this->container->getParameter('avatarsFolder');
+        $this->avatarsFolderPath .= $mgc_params['avatars_folder'];
 
-        $this->avatarsAssetsPath = $this->container->getParameter('avatarsFolder');
+        $this->avatarsAssetsPath = $mgc_params['avatars_folder'];
     }
 
     public function setUserAvatarAssets(User $user)
