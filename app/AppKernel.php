@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new MGC\DeveloperBundle\DeveloperBundle(),
             new MGC\TodoBundle\TodoBundle(),
             new JSP\AdminBundle\JspAdminBundle(),
+            new JSP\CoreBundle\JspCoreBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

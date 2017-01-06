@@ -18,7 +18,12 @@ todo:
     type:     annotation
     prefix:   /
 
-jsp:
+jsp_admin:
     resource: "@JspAdminBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+jsp_core:
+    resource: "@JspCoreBundle/Controller/"
     type:     annotation
     prefix:   /
