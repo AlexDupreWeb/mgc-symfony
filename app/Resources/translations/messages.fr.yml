@@ -1,4 +1,10 @@
 mgc:
+  permissions:
+    allow_access: "autoriser l'accès"
+    is_admin: "est administrateur"
+    can_update: "peut modifier"
+    can_delete: "peut supprimer"
+
   global:
     administration: "administration"
     dashboard: "tableau de bord"
@@ -17,3 +23,7 @@ mgc:
 
   faq:
     questions_answers: "des questions, des réponses"
+
+  error:
+    nothing_to_show: "erreur, rien à afficher"
+    list_is_empty: "erreur, liste vide"

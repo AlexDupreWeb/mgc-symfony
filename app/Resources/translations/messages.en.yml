@@ -1,4 +1,8 @@
 mgc:
+  permissions:
+    allow_access: "authorize access"
+    is_admin: "is administrator"
+
   global:
     administration: "administration"
     dashboard: "dashboard"
@@ -17,3 +21,7 @@ mgc:
 
   faq:
     questions_answers: "questions, answers"
+
+  error:
+      nothing_to_show: "error, nothing to show"
+      list_is_empty: "error, list is empty"
