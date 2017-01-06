@@ -1,4 +1,4 @@
 <?php
-namespace MGC\Modules\Admin\PermissionBundle\Exception;
+namespace MGC\AdminBundle\Exception;
 
 class PermissionException extends \Exception {}

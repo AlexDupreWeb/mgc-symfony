@@ -45,7 +45,6 @@ class UserMapper {
             ->setOrdre(0)
         ;
         
-        
         return $mgc_user;
     }
     

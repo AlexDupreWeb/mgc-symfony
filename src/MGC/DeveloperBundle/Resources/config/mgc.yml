@@ -1,0 +1,12 @@
+website:
+  name: 'Back Office'
+  #url: 'http://mgc.alexandre-dupre.fr'
+  url: 'localhost'
+  namespace: mgc
+  modules:
+    -
+      name: developer
+      uri: developer
+      active: true
+      order: 0
+      group: developer

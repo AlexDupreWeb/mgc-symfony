@@ -26,7 +26,82 @@
                         {% include "AdminBundle:User:inc/nav.html.twig" %}
                         <div class="tab-content">
                             <div class="tab-pane active">
+                                <div class="box-group" id="accordion">
 
+                                    {% for website in websites %}
+                                    <div class="panel box-solid box {% if website.isAdmin() %}box-primary{% else %}box-default{% endif %}">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseWebsite{{ loop.index }}" {% if loop.first %}aria-expanded="true"{% else %}aria-expanded="false" class="collapsed"{% endif %}>
+                                                    <i class="fa fa-cubes"></i> {{ website.getName() }}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="collapseWebsite{{ loop.index }}" class="panel-collapse collapse {% if loop.first %}in{% endif %}" {% if loop.first %}aria-expanded="true"{% else %}aria-expanded="false"{% endif %}>
+                                            <div class="box-body">
+                                                <div class="row">
+                                                    {% for module in website.getModules() %}
+
+                                                        <div class="col-md-6">
+                                                            <div class="box {% if module.getGroup() == 'admin' %}box-warning{% else %}box-default{% endif %} mgc-rules-container">
+                                                                <div class="box-header">
+                                                                    <h3 class="box-title"><i class="fa fa-cube"></i> {{ module.getName() }}</h3>
+                                                                    <div class="box-tools pull-right">
+                                                                        <button type="button" class="btn btn-box-tool" data-widget="mgc-hideRulesInactive"><i class="fa fa-eye-slash"></i></button>
+                                                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="box-body">
+                                                                    {% if module.getRules()|length > 0  %}
+                                                                        <div class="row">
+
+
+
+                                                                            <div class="col-md-4"><button type="button" class="btn btn-xs btn-flat btn-block btn-default"><i class="fa fa-check-square-o"></i> Tout cocher</button></div>
+                                                                            <div class="col-md-4"><button type="button" class="btn btn-xs btn-flat btn-block btn-default"><i class="fa fa-square-o"></i> Tout décocher</button></div>
+                                                                            <div class="col-md-4"><button type="button" class="btn btn-xs btn-flat btn-block btn-default"><i class="fa fa-refresh"></i> Inverser la sélection</button></div>
+
+
+
+                                                                            {% for rule in module.getRules() %}
+
+                                                                                <div class="col-md-6" {% if rule.isActive() %}data-active="true"{% else %}data-active="false"{% endif %}>
+                                                                                    <div class="checkbox">
+                                                                                        <label>
+                                                                                            {% if rule.isActive() %}<input type="checkbox">{% endif %}
+                                                                                            <span {% if not rule.isActive() %}class="text-line-through"{% endif %}>
+                                                                                                {{ ('mgc.permissions.' ~ rule.getName()) |trans({}, "messages", app.request.locale)|capitalize }}
+                                                                                            </span>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            {% endfor %}
+                                                                        </div>
+                                                                    {% else %}
+                                                                        <div class="alert alert-danger">{{ 'mgc.error.list_is_empty' |trans({}, "messages", app.request.locale)|capitalize }}</div>
+                                                                    {% endif %}
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="text-center">
+                                            <button type="button" class="btn btn-primary btn-flat"><i class="fa fa-floppy-o"></i> Enregistrer</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

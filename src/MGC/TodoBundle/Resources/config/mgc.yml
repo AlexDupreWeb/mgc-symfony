@@ -1,0 +1,48 @@
+website:
+  name: 'alexandre-dupre.fr'
+  #url: 'http://mgc.alexandre-dupre.fr'
+  url: 'http://www.alexandre-dupre.fr'
+  namespace: adw
+  modules:
+    -
+      name: pages
+      uri: pages
+      active: true
+      order: 0
+      group:
+      rules:
+        -
+          name: allow_access
+          var: allow_access
+          params:
+          category: allow_access
+          active: true
+          order: 0
+        -
+          name: is_admin
+          var: is_admin
+          params:
+          category: admin
+          active: true
+          order: 1
+        -
+          name: can_update
+          var: can_update
+          params:
+          category:
+          active: true
+          order: 4
+        -
+          name: can_delete
+          var: can_delete
+          params:
+          category:
+          active: true
+          order: 3
+        -
+          name: atoto
+          var: atoto
+          params:
+          category: atoto
+          active: false
+          order: 3

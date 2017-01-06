@@ -1,10 +1,18 @@
+parameters:
+
 services:
-#    admin.example:
-#        class: MGC\AdminBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    mgc.core.service.parameters:
+        class: MGC\CoreBundle\Services\ParametersService
+        arguments:
+            - '@service_container'
     mgc.admin.service.users.avatar:
         class: MGC\AdminBundle\Services\Users\AvatarService
         arguments:
             - '@service_container'
             - '@doctrine.orm.entity_manager'
             - '@assets.packages'
+    mgc.admin.service.permission:
+        class: MGC\AdminBundle\Services\Permissions\PermissionService
+        arguments:
+            - '%kernel.bundles%'
+            - '%kernel.root_dir%'
