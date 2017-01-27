@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                JS-Personalizer
+                <small>{{ 'jsp.global.accounts'|trans({}, "messages", app.request.locale)|capitalize }}</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="{{ url('home') }}">
+                        <i class="fa fa-home"></i> <span>{{ 'mgc.global.home'|trans({}, "messages", app.request.locale)|capitalize }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url('jsp_home') }}">JSP</a>
+                </li>
+                <li class="active">{{ 'jsp.global.accounts'|trans({}, "messages", app.request.locale)|capitalize }}</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Your Page Content Here -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        <a class="btn btn-default" href="{{ url('jsp_home') }}">
+                            <i class="fa fa-arrow-left"></i> {{ 'mgc.global.return'|trans({}, "messages", app.request.locale)|capitalize }}
+                        </a>
+                        <a class="btn btn-success" href="{{ url('jsp_admin_accounts_add') }}">
+                            <i class="fa fa-plus"></i> {{ 'mgc.global.add'|trans({}, "messages", app.request.locale)|capitalize }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    {% if accounts|length > 0 %}
+                    <form>
+                        <div class="box box-solid box-black">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">{{ 'jsp.global.accounts_list'|trans({}, "messages", app.request.locale)|capitalize }}</h3>
+                                <div class="box-tools pull-right">
+                                    <a class="btn btn-box-tool" href="{{ url('admin-mgc-users-add') }}"><i class="fa fa-plus"></i> {{ 'mgc.global.add'|trans({}, "messages", app.request.locale)|capitalize }}</a>
+                                    <a class="btn btn-box-tool" data-toggle="popin-help" href="#"><i class="fa fa-question"></i> {{ 'mgc.global.help'|trans({}, "messages", app.request.locale)|capitalize }}</a>
+                                </div>
+                            </div>
+
+                            <div class="box-body no-padding">
+                                <table class="table">
+                                    <colgroup>
+                                        <col width="5%">
+                                        <col width="35%">
+                                        <col width="47%">
+                                        <col width="13%">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Description</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {%  for account in accounts %}
+                                        <tr>
+                                            <td>{{ account.getId() }}</td>
+                                            <td>{{ account.getName() }}</td>
+                                            <td>{{ account.getDescription() }}</td>
+
+                                            <td class="text-right">
+                                                <div class="btn-group">
+                                                    <a class="btn btn-default" href="#"><i class="fa fa-pencil"></i> Modifier</a>
+                                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                        <span class="caret"></span><span class="sr-only">Action</span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu">
+                                                        <li><a href="#"><i class="fa fa-pencil"></i> Modifier</a></li>
+                                                        <li><a href="#"><i class="fa fa-stop"></i> Stopper</a></li>
+                                                        <li class="divider"></li>
+                                                        <li><a href="#"><i class="fa fa-trash"></i> Supprimer</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                    {% else %}
+                        <div class="alert alert-info">
+                            <h4><i class="icon fa fa-info"></i> {{ 'mgc.global.information'|trans({}, "messages", app.request.locale)|capitalize }} </h4>
+                            {{ 'mgc.error.no_object_to_show'|trans({'%object%': txt_account}, "messages", app.request.locale)|capitalize }}
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <!-- -->
+
+        </section>
+    </div>
+{% endblock %}
