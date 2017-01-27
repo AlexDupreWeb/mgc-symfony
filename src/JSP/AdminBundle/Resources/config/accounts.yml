@@ -1,0 +1,12 @@
+accounts:
+  demo:
+    -
+      name: 'QCM Master'
+      description: 'www.qcmmaster.fr'
+      date_created: '2017-01-22 14:00:00'
+      date_updated: '2017-01-22 14:00:00'
+    -
+      name: 'Alexandre Dupré'
+      description: 'www.alexandre-dupre.fr'
+      date_created: null
+      date_updated: null
