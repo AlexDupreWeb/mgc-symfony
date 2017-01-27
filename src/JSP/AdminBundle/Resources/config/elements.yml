@@ -1,0 +1,48 @@
+elements:
+  demo:
+    -
+      name: "Popin Test 1"
+      date_begin: '2017-01-01 00:00:00'
+      date_end: '2017-12-31 23:59:59'
+      date_created: '2017-01-22 14:00:00'
+      date_updated: '2017-01-22 14:00:00'
+      data: ''
+      state: 'scheduled'
+      active: true
+    -
+      name: "Popin Test 2"
+      date_begin: '2017-01-01 00:00:00'
+      date_end: '2017-12-31 23:59:59'
+      data: ''
+      state: 'draft'
+      active: true
+    -
+      name: "Popin Test 3"
+      date_begin: '2017-06-01 00:00:00'
+      date_end: '2017-12-31 23:59:59'
+      data: ''
+      state: 'scheduled'
+      active: true
+    -
+      name: "Bandeau Test A"
+      date_begin: '2017-01-01 00:00:00'
+      date_end: '2017-01-31 23:59:59'
+      date_created: '2017-01-22 14:00:00'
+      date_updated: '2017-01-22 14:00:00'
+      data: ''
+      state: 'stopped'
+      active: true
+    -
+      name: "Bandeau Test B"
+      date_begin: '2017-06-30 00:00:00'
+      date_end: '2017-12-31 23:59:59'
+      data: ''
+      state: 'scheduled'
+      active: true
+    -
+      name: "Bandeau Test C"
+      date_begin: '2017-01-01 00:00:00'
+      date_end: '2017-01-02 23:59:59'
+      data: ''
+      state: 'scheduled'
+      active: true
