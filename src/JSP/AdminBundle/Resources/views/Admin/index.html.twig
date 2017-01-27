@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                JS-Personalizer
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Your Page Content Here -->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-body">
+                            <a class="btn btn-app" href="{{ url('jsp_admin_accounts') }}">
+                                <span class="badge bg-black">891</span>
+                                <i class="fa fa-user-secret"></i> {{ 'jsp.global.accounts'|trans({}, "messages", app.request.locale)|capitalize }}
+                            </a>
+
+                            <a class="btn btn-app" href="#">
+                                <span class="badge bg-black">891</span>
+                                <i class="fa fa-user"></i> {{ 'jsp.global.users'|trans({}, "messages", app.request.locale)|capitalize }}
+                            </a>
+
+                            <a class="btn btn-app" href="#">
+                                <span class="badge bg-black">891</span>
+                                <i class="fa fa-key"></i> {{ 'jsp.global.keys'|trans({}, "messages", app.request.locale)|capitalize }}
+                            </a>
+
+                            <a class="btn btn-app" href="{{ url('jsp_admin_elements') }}">
+                                <span class="badge bg-black">891</span>
+                                <i class="fa fa-puzzle-piece"></i> {{ 'jsp.global.elements'|trans({}, "messages", app.request.locale)|capitalize }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box box-solid box-black">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Liste des widgets en cours</h3>
+                            <div class="box-tools pull-right">
+                                <a class="btn btn-box-tool" href="{{ url('admin-mgc-users-add') }}"><i class="fa fa-plus"></i> Ajouter</a>
+                                <a class="btn btn-box-tool" data-toggle="popin-help" href="#"><i class="fa fa-question"></i> Aide</a>
+                            </div>
+                        </div>
+
+                        <div class="box-body no-padding">
+                            <table class="table">
+                                <colgroup>
+                                    <col width="5%">
+                                    <col width="30%">
+                                    <col width="7%">
+                                    <col width="30%">
+                                    <col width="15%">
+                                    <col width="13%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Compte</th>
+                                    <th colspan="2">Widget</th>
+                                    <th>Durée</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {%  for i in 0..10 %}
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <a href="#">Alexandre Dupré</a>
+                                    </td>
+                                    <td>
+                                        <span class="label label-default"><i class="fa fa-pencil"></i> Brouillon</span>
+                                        <!--<span class="label label-primary"><i class="fa fa-clock-o"></i> Programmé</span>
+                                        <span class="label label-success"><i class="fa fa-clock-o"></i> En cours</span>
+                                        <span class="label label-danger"><i class="fa fa-ban"></i> Annulé</span>-->
+                                    </td>
+                                    <td>Nom du widget</td>
+                                    <td>
+                                        <span class="small">12/12/2016 - 12/12/2017</span>
+                                        <br>
+                                        <div class="progress progress-xxs">
+                                            <div class="progress-bar progress-bar-success" style="width: 70%"></div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a class="btn btn-default" href="#"><i class="fa fa-pencil"></i> Modifier</a>
+                                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span><span class="sr-only">Action</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"><i class="fa fa-pencil"></i> Modifier</a></li>
+                                                <li><a href="#"><i class="fa fa-stop"></i> Stopper</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"><i class="fa fa-trash"></i> Supprimer</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- -->
+
+        </section>
+    </div>
+{% endblock %}
