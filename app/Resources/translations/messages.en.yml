@@ -2,18 +2,31 @@ mgc:
   permissions:
     allow_access: "authorize access"
     is_admin: "is administrator"
+    can_update: "can update"
+    can_delete: "can delete"
 
   global:
+    add: "add"
     administration: "administration"
     dashboard: "dashboard"
+    edit: "edit"
     help: "help"
     home: "home"
+    information: "information"
     my_shortcuts: "my shortcuts"
     online: "online"
     profile: "profile"
+    return: "return"
     settings: "settings"
     sign_out: "sign out"
     shortcuts: "shortcuts"
+    unknown: "unknown"
+
+    draft: "draft"
+    finished: "finished"
+    ongoing: "ongoing"
+    scheduled: "scheduled"
+    stopped: "stopped"
 
   home:
     content_manager: "content manager"
@@ -23,5 +36,26 @@ mgc:
     questions_answers: "questions, answers"
 
   error:
-      nothing_to_show: "error, nothing to show"
-      list_is_empty: "error, list is empty"
+    error: "error"
+    nothing_to_show: "nothing to show"
+    no_object_to_show: "no %object% to show"
+    list_is_empty: "list is empty"
+
+jsp:
+  global:
+    account: "account"
+    accounts: "accounts"
+    element: "element"
+    elements: "elements"
+    key: "key"
+    keys: "keys"
+    user: "user"
+    users: "users"
+
+    add_element: "add element"
+    edit_element: "edit element"
+    elements_list: "elements list"
+
+    add_account: "add account"
+    edit_account: "edit account"
+    accounts_list: "account list"

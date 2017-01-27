@@ -6,16 +6,27 @@ mgc:
     can_delete: "peut supprimer"
 
   global:
+    add: "ajouter"
     administration: "administration"
     dashboard: "tableau de bord"
+    edit: "modifier"
     help: "aide"
     home: "accueil"
+    information: "information"
     my_shortcuts: "mes raccourcis"
     online: "connecté"
     profile: "profil"
+    return: "retour"
     settings: "paramètres"
     sign_out: "déconnexion"
     shortcuts: "raccourcis"
+    unknown: "inconnu"
+
+    draft: "brouillon"
+    finished: "terminé"
+    ongoing: "en cours"
+    scheduled: "programmé"
+    stopped: "stoppé"
 
   home:
     content_manager: "gestionnaire de contenu"
@@ -25,5 +36,26 @@ mgc:
     questions_answers: "des questions, des réponses"
 
   error:
-    nothing_to_show: "erreur, rien à afficher"
-    list_is_empty: "erreur, liste vide"
+    error: "erreur"
+    nothing_to_show: "rien à afficher"
+    no_object_to_show: "aucun %object% à afficher"
+    list_is_empty: "liste vide"
+
+jsp:
+  global:
+    account: "compte"
+    accounts: "comptes"
+    element: "élément"
+    elements: "éléments"
+    key: "clé"
+    keys: "clés"
+    user: "utilisateur"
+    users: "utilisateurs"
+
+    add_element: "ajouter un élément"
+    edit_element: "modifier un élément"
+    elements_list: "liste des éléments"
+
+    add_account: "ajouter un compte"
+    edit_account: "modifier un compte"
+    accounts_list: "liste des comptes"
