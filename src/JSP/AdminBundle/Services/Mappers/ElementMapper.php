@@ -45,4 +45,40 @@ class ElementMapper {
         return $element;
     }
 
+    /**
+     * @param Element $element
+     * @return \JSP\AdminBundle\Dto\Element
+     */
+    public function entityToDto(Element $element) {
+        $elementDto = new \JSP\AdminBundle\Dto\Element\Element();
+
+        $elementDto->setName($element->getName());
+        $elementDto->setDateBegin($element->getDateBegin());
+        $elementDto->setDateEnd($element->getDateEnd());
+        $elementDto->setData($element->getData());
+        $elementDto->setState($element->getState());
+        $elementDto->setActive($element->isActive());
+        $elementDto->setDateCreated($element->getDateCreated());
+        $elementDto->setDateUpdated($element->getDateUpdated());
+
+        $elementDto->setTimerState(new TimerState($element->getDateBegin(), $element->getDateEnd()));
+        $elementDto->setConditionState(new ConditionState($element->getState(), $element->getDateBegin(), $element->getDateEnd()));
+
+        return $elementDto;
+    }
+
+    /**
+     * @param array $entities The list filled with th entity to transform into a DTO list
+     * @return array The list of DTOs
+     */
+    public function entitiesListToDtoList(array $entities) {
+        $dtoList = [];
+
+        foreach ($entities as $entity) {
+            $dtoList[] = $this->entityToDto($entity);
+        }
+
+        return $dtoList;
+    }
+
 }
