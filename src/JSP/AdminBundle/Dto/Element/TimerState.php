@@ -34,15 +34,29 @@ class TimerState {
 
         $now = new \DateTime();
 
-        if(!empty($dateBegin) && !empty($dateEnd)) {
+        if (!empty($dateBegin) && !empty($dateEnd)) {
             $this->total_days = $dateBegin->diff($dateEnd)->format('%a');
             $this->remaining_days = $now->diff($dateEnd)->format('%a');
 
-            if($this->remaining_days > $this->total_days) {
+            if ($this->remaining_days > $this->total_days) {
                 $this->remaining_days = $this->total_days;
             }
 
-            $this->percent = ( 1 - $this->remaining_days / $this->total_days ) * 100;
+            // Add precision in percent return
+
+            $this->total_seconds = $dateEnd->getTimestamp() - $dateBegin->getTimestamp();
+            $this->remaining_seconds = $dateEnd->getTimestamp() - $now->getTimestamp();
+
+            if ($this->remaining_seconds > $this->total_seconds) {
+                $this->remaining_seconds = $this->total_seconds;
+            }
+
+            $this->percent = ( 1 - $this->remaining_seconds / $this->total_seconds ) * 100;
+
+            if ($this->percent > 100) {
+                $this->percent = 100;
+            }
+
             $this->percent = floor($this->percent);
         }
 
