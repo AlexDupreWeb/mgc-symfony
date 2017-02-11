@@ -58,7 +58,6 @@
                                         <col width="5%">
                                         <col width="7%">
                                         <col width="45%">
-
                                         <col width="30%">
                                         <col width="13%">
                                     </colgroup>
@@ -99,15 +98,13 @@
                                                 <span class="small">{{ element.getDateBegin()|date('d/m/Y H:i:s') }} - {{ element.getDateEnd()|date('d/m/Y H:i:s') }}</span>
                                                 <br>
 
-                                                {% set progress_bar_color = 'success' %}
-                                                {% if element.getTimerState().getPercent() > 60 %}
-                                                    {% set progress_bar_color = 'warning' %}
-                                                {% elseif element.getTimerState().getPercent() > 90 %}
-                                                    {% set progress_bar_color = 'danger' %}
+                                                {% if element.getConditionState().getCurrentState == "finished" %}
+                                                    {{ bootstrapProgressBar(100, 'black', 'xxs')|raw }}
+                                                {% elseif element.getConditionState().getCurrentState == "stopped" or element.getConditionState().getCurrentState == "draft" %}
+                                                    {{ bootstrapProgressBar(element.getTimerState().getPercent(), 'black', 'xxs')|raw }}
+                                                {% else %}
+                                                    {{ bootstrapProgressBar(element.getTimerState().getPercent(), 'auto', 'xxs', [], true)|raw }}
                                                 {% endif %}
-                                                <div class="progress progress-xxs">
-                                                    <div class="progress-bar progress-bar-{{ progress_bar_color }}" style="width: {{ element.getTimerState().getPercent() }}%"></div>
-                                                </div>
                                             </td>
 
                                             <td class="text-right">
