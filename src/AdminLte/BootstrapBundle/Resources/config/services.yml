@@ -1,0 +1,9 @@
+services:
+    bootstrap.twig.progressbar_extension:
+        class: AdminLte\BootstrapBundle\Twig\ProgressBarExtension
+        public: false
+        arguments:
+          - '@twig'
+          - '@service_container'
+        tags:
+          - { name: twig.extension }

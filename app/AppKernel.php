@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new MGC\AdminBundle\AdminBundle(),
             new MGC\DeveloperBundle\DeveloperBundle(),
             new MGC\TodoBundle\TodoBundle(),
+            new AdminLte\BootstrapBundle\BootstrapBundle(),
             new JSP\AdminBundle\JspAdminBundle(),
             new JSP\CoreBundle\JspCoreBundle(),
         ];

@@ -1,0 +1,5 @@
+<div class="progress progress-{{ weight }} {% if vertical %}vertical{% endif %}">
+    {% for stage in stages %}
+    <div class="progress-bar progress-bar-{{ stage.color }}" style="width: {{ stage.value }}%"></div>
+    {% endfor %}
+</div>
