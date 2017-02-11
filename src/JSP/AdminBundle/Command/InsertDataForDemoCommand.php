@@ -29,7 +29,8 @@ class InsertDataForDemoCommand extends ContainerAwareCommand {
         $encoder = $this->getContainer()->get('security.password_encoder');
         $em = $this->getContainer()->get('doctrine')->getEntityManager('default');
 
-        $this->addAccounts($input, $output, $kernel, $em);
+        //$this->addAccounts($input, $output, $kernel, $em);
+        $this->addElements($input, $output, $kernel, $em);
     }
 
     /**
@@ -64,6 +65,34 @@ class InsertDataForDemoCommand extends ContainerAwareCommand {
         }
 
         $output->writeln('<info>[END] Accounts created!</info>');
+    }
+
+    private function addElements(InputInterface $input, OutputInterface $output, $kernel, $em) {
+        $elementMapper = new ElementMapper();
+
+        $output->writeln('<info>[BEGIN] Prepare Elements</info>');
+        $output->writeln('');
+
+        // YAML
+        $yamlPath = $kernel->locateResource('@JspAdminBundle/Resources/config/elements.yml');
+        $yamlContent = Yaml::parse(file_get_contents($yamlPath));
+        $yamlElements = $yamlContent['elements']['demo'];
+
+        // ACCOUNTS
+        $elements = array();
+        foreach($yamlElements as $yamlElement) {
+            $elements[] = $elementMapper->yamlToEntity($yamlElement);
+        }
+
+        $output->writeln('<info> - Insert Elements</info>');
+        $output->writeln('');
+
+        foreach($elements as $element) {
+            $em->persist($element);
+            $em->flush();
+        }
+
+        $output->writeln('<info>[END] Elements created!</info>');
     }
 
 }
