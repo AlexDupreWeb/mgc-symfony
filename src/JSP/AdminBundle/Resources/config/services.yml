@@ -3,6 +3,11 @@ services:
 #        class: JSP\AdminBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
 
+    jsp.admin.service.account:
+        class: JSP\AdminBundle\Services\AccountService
+        arguments:
+          - '@doctrine.orm.entity_manager'
+
     jsp.admin.service.element:
         class: JSP\AdminBundle\Services\ElementService
         arguments:
