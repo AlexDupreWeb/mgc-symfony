@@ -47,7 +47,7 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title">{{ 'jsp.global.accounts_list'|trans({}, "messages", app.request.locale)|capitalize }}</h3>
                                 <div class="box-tools pull-right">
-                                    <a class="btn btn-box-tool" href="{{ url('admin-mgc-users-add') }}"><i class="fa fa-plus"></i> {{ 'mgc.global.add'|trans({}, "messages", app.request.locale)|capitalize }}</a>
+                                    <a class="btn btn-box-tool" href="{{ url('jsp_admin_accounts_add') }}"><i class="fa fa-plus"></i> {{ 'mgc.global.add'|trans({}, "messages", app.request.locale)|capitalize }}</a>
                                     <a class="btn btn-box-tool" data-toggle="popin-help" href="#"><i class="fa fa-question"></i> {{ 'mgc.global.help'|trans({}, "messages", app.request.locale)|capitalize }}</a>
                                 </div>
                             </div>
@@ -73,17 +73,16 @@
                                         <tr>
                                             <td>{{ account.getId() }}</td>
                                             <td>{{ account.getName() }}</td>
-                                            <td>{{ account.getDescription() }}</td>
+                                            <td>{{ account.getDescription()|nl2br }}</td>
 
                                             <td class="text-right">
                                                 <div class="btn-group">
-                                                    <a class="btn btn-default" href="#"><i class="fa fa-pencil"></i> Modifier</a>
+                                                    <a class="btn btn-default" href="{{ url('jsp_admin_accounts_edit', { 'id': account.getId() }) }}"><i class="fa fa-pencil"></i> Modifier</a>
                                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                                         <span class="caret"></span><span class="sr-only">Action</span>
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu">
-                                                        <li><a href="#"><i class="fa fa-pencil"></i> Modifier</a></li>
-                                                        <li><a href="#"><i class="fa fa-stop"></i> Stopper</a></li>
+                                                        <li><a href="{{ url('jsp_admin_accounts_edit', { 'id': account.getId() }) }}"><i class="fa fa-pencil"></i> Modifier</a></li>
                                                         <li class="divider"></li>
                                                         <li><a href="#"><i class="fa fa-trash"></i> Supprimer</a></li>
                                                     </ul>
