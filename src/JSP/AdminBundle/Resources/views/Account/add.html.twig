@@ -26,12 +26,22 @@
         <!-- Main content -->
         <section class="content">
 
+            <div class="row">
+                <div class="col-md-12">
+                    <p>
+                        <a class="btn btn-black" href="{{ url('jsp_admin_accounts') }}">
+                            <i class="fa fa-arrow-left"></i> {{ 'mgc.global.return'|trans({}, "messages", app.request.locale)|capitalize }}
+                        </a>
+                    </p>
+                </div>
+            </div>
+
             {{ form_start(form) }}
 
             <div class="row">
                 <div class="col-md-6">
 
-                    <div class="box box-primary">
+                    <div class="box box-black">
                         <div class="box-header with-border">
                             <h3 class="box-title">Add an Account</h3>
                         </div>

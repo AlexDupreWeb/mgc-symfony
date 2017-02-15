@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <p>
-                        <a class="btn btn-default" href="{{ url('jsp_home') }}">
+                        <a class="btn btn-black" href="{{ url('jsp_home') }}">
                             <i class="fa fa-arrow-left"></i> {{ 'mgc.global.return'|trans({}, "messages", app.request.locale)|capitalize }}
                         </a>
                         <a class="btn btn-success" href="{{ url('jsp_admin_accounts_add') }}">
@@ -37,6 +37,14 @@
                     </p>
                 </div>
             </div>
+
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">{{ flashMessage }}</div>
+            {% endfor %}
+
+            {% for flashMessage in app.session.flashbag.get('error') %}
+                <div class="alert alert-error">{{ flashMessage }}</div>
+            {% endfor %}
 
             <div class="row">
                 <div class="col-md-12">
@@ -77,14 +85,14 @@
 
                                             <td class="text-right">
                                                 <div class="btn-group">
-                                                    <a class="btn btn-default" href="{{ url('jsp_admin_accounts_edit', { 'id': account.getId() }) }}"><i class="fa fa-pencil"></i> Modifier</a>
+                                                    <a class="btn btn-default" href="{{ url('jsp_admin_accounts_edit', { 'id': account.getId() }) }}"><i class="fa fa-pencil"></i> {{ 'mgc.global.edit'|trans({}, "messages", app.request.locale)|capitalize }}</a>
                                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                                         <span class="caret"></span><span class="sr-only">Action</span>
                                                     </button>
                                                     <ul class="dropdown-menu" role="menu">
-                                                        <li><a href="{{ url('jsp_admin_accounts_edit', { 'id': account.getId() }) }}"><i class="fa fa-pencil"></i> Modifier</a></li>
+                                                        <li><a href="{{ url('jsp_admin_accounts_edit', { 'id': account.getId() }) }}"><i class="fa fa-pencil"></i> {{ 'mgc.global.edit'|trans({}, "messages", app.request.locale)|capitalize }}</a></li>
                                                         <li class="divider"></li>
-                                                        <li><a href="#"><i class="fa fa-trash"></i> Supprimer</a></li>
+                                                        <li><a href="{{ url('jsp_admin_accounts_delete', { 'id': account.getId() }) }}" data-toggle="popin-confirm"><i class="fa fa-trash"></i> {{ 'mgc.global.delete'|trans({}, "messages", app.request.locale)|capitalize }}</a></li>
                                                     </ul>
                                                 </div>
                                             </td>
