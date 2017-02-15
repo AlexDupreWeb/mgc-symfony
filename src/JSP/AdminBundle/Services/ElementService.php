@@ -3,6 +3,7 @@
 namespace JSP\AdminBundle\Services;
 
 use Doctrine\ORM\EntityManager;
+use JSP\AdminBundle\Dto\Element\ElementForm;
 use JSP\AdminBundle\Services\Mappers\ElementMapper;
 
 class ElementService {
@@ -41,5 +42,37 @@ class ElementService {
         $elements = $this->elementRepository->findAll();
         $elements = $this->elementMapper->entitiesListToDtoList($elements);
         return $elements;
+    }
+
+    public function createElementWithFormDto(ElementForm $elementForm) {
+        $now = new \DateTime();
+
+        $elementForm
+            ->setDateCreated($now)
+            ->setDateUpdated($now)
+        ;
+
+        $element = $this->elementMapper->DtoFormToEntity($elementForm);
+
+        $this->em->persist($element);
+        $this->em->flush();
+
+        return $element;
+    }
+
+    public function updateElementWithFormDto(ElementForm $elementForm) {
+        $element = $this->elementMapper->DtoFormToEntity($elementForm);
+
+        $now = new \DateTime();
+
+        $element->setDateUpdated($now);
+
+        $this->em->persist($element);
+        $this->em->flush();
+    }
+
+    public function deleteElement(Element $element) {
+        $this->em->remove($element);
+        $this->em->flush();
     }
 }
