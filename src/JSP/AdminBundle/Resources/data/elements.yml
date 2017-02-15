@@ -1,0 +1,4 @@
+states:
+  - draft
+  - scheduled
+  - stopped
