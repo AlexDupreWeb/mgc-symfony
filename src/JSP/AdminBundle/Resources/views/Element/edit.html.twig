@@ -28,9 +28,118 @@
 
             <div class="row">
                 <div class="col-md-12">
+                    <p>
+                        <a class="btn btn-black" href="{{ url('jsp_admin_elements') }}">
+                            <i class="fa fa-arrow-left"></i> {{ 'mgc.global.return'|trans({}, "messages", app.request.locale)|capitalize }}
+                        </a>
+                    </p>
                 </div>
             </div>
 
+            {{ form_start(form) }}
+
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="box box-black">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Add an Element</h3>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                {{ form_label(form.name) }}
+                                {{ form_errors(form.name) }}
+                                {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.state) }}
+                                {{ form_errors(form.state) }}
+                                {{ form_widget(form.state, { 'attr': {'class': 'form-control'} }) }}
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.date_begin) }}
+                                {{ form_errors(form.date_begin) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    {{ form_widget(form.date_begin, { 'attr': {'class': 'form-control datetimepicker'} }) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_label(form.date_end) }}
+                                {{ form_errors(form.date_end) }}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                    {{ form_widget(form.date_end, { 'attr': {'class': 'form-control datetimepicker'} }) }}
+                                </div>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    {{ form_widget(form.active, { 'attr': {'class': ''} }) }} {{ form_label(form.active)|striptags }}
+                                </label>
+                            </div>
+
+
+
+                            <div class="text-center">
+                                {{ form_widget(form.save, { 'attr': {'class': 'btn btn-primary'} }) }}
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+
         </section>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $(function () {
+            $('.datetimepicker').datetimepicker({
+                format: 'DD/MM/YYYY HH:mm:ss',
+                icons: {
+                    time: 'fa fa-clock-o',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-arrow-up',
+                    down: 'fa fa-arrow-down',
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-crosshairs',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-times'
+                },
+                showTodayButton: true,
+                showClear: true,
+                showClose: true,
+            });
+
+            $('.datepicker').datetimepicker({
+                format: 'DD/MM/YYYY',
+                icons: {
+                    time: 'fa fa-clock-o',
+                    date: 'fa fa-calendar',
+                    up: 'fa fa-arrow-up',
+                    down: 'fa fa-arrow-down',
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-crosshairs',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-times'
+                },
+                showTodayButton: true,
+                showClear: true,
+                showClose: true,
+            });
+
+        });
+    </script>
 {% endblock %}
