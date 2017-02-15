@@ -3,6 +3,10 @@ $(function(){
         alert('popin aide à venir...');
     });
 
+    $('a[data-toggle="popin-confirm"],btn[data-toggle="popin-confirm"]').click(function(){
+        return confirm("Are you sure???");
+    });
+
     //USER_DESIGN
     $('[data-skin]').click(function(){
         $('#preview-skin').html($(this).html());
