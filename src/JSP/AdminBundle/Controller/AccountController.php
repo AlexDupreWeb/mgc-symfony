@@ -91,4 +91,21 @@ class AccountController extends MGCController {
         ));
     }
 
+    /**
+     * @Route("/jsp/accounts/delete/{id}", requirements={"id": "\d+"}, name="jsp_admin_accounts_delete")
+     */
+    public function deleteAction($id) {
+        $this->accountService = $this->get('jsp.admin.service.account');
+        $account = $this->getDoctrine()->getRepository('JspCoreBundle:Account')->find($id);
+
+        if (!empty($account) && !empty($account->getId())) {
+            $this->accountService->deleteAccount($account);
+            $this->addFlash('success', "Account #{$id} deleted!");
+        } else {
+            $this->addFlash('error', "Account #{$id} can't be deleted!");
+        }
+
+        return $this->redirectToRoute('jsp_admin_accounts');
+    }
+
 }

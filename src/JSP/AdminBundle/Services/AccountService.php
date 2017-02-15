@@ -51,7 +51,8 @@ class AccountService {
         $this->em->flush();
     }
 
-    public function deleteAccount() {
-
+    public function deleteAccount(Account $account) {
+        $this->em->remove($account);
+        $this->em->flush();
     }
 }
