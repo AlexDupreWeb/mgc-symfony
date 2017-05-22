@@ -16,3 +16,13 @@ services:
 
     jsp.admin.mapper.element:
         class: JSP\AdminBundle\Services\Mappers\ElementMapper
+
+
+    jsp.twig.infobox_extension:
+        class: JSP\AdminBundle\Twig\InfoBoxExtension
+        public: false
+        arguments:
+          - '@twig'
+          - '@service_container'
+        tags:
+          - { name: twig.extension }

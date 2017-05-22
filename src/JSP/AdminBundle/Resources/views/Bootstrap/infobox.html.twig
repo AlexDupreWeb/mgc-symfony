@@ -1,0 +1,12 @@
+<div class="info-box">
+    <span class="info-box-icon {{ boxColor }}"><i class="fa {{ boxIcon }}"></i></span>
+
+    <div class="info-box-content">
+        <span class="info-box-text">{{ boxText|trans({}, "messages", app.request.locale)|capitalize }}</span>
+        <p>
+            <i class="fa fa-flag-o"></i> {{ element.getDateBegin()|date('d/m/Y H:i:s') }}
+            <br>
+            <i class="fa fa-flag-checkered"></i> {{ element.getDateEnd()|date('d/m/Y H:i:s') }}
+        </p>
+    </div>
+</div>
