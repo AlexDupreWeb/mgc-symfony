@@ -117,7 +117,7 @@
                                                         <li><a href="{{ url('jsp_admin_elements_edit', { 'id': element.getId() }) }}"><i class="fa fa-pencil"></i>  {{ 'mgc.global.edit'|trans({}, "messages", app.request.locale)|capitalize }}</a></li>
                                                         <li><a href="{{ url('jsp_admin_elements_stop', { 'id': element.getId() }) }}"><i class="fa fa-stop"></i>  {{ 'mgc.global.stop'|trans({}, "messages", app.request.locale)|capitalize }}</a></li>
                                                         <li class="divider"></li>
-                                                        <li><a href="{{ url('jsp_admin_elements_delete', { 'id': element.getId() }) }}"><i class="fa fa-trash"></i>  {{ 'mgc.global.delete'|trans({}, "messages", app.request.locale)|capitalize }}</a></li>
+                                                        <li><a href="{{ url('jsp_admin_elements_delete', { 'id': element.getId() }) }}" data-toggle="popin-confirm"><i class="fa fa-trash"></i>  {{ 'mgc.global.delete'|trans({}, "messages", app.request.locale)|capitalize }}</a></li>
                                                     </ul>
                                                 </div>
                                             </td>
