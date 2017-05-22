@@ -118,6 +118,7 @@ class ElementController extends MGCController {
         $this->elementMapper = $this->get('jsp.admin.mapper.element');
 
         $element = $this->getDoctrine()->getRepository('JspCoreBundle:Element')->find($id);
+        $elementDto = $this->elementMapper->entityToDto($element);
         $elementForm = $this->elementMapper->entityToDtoForm($element);
 
 
@@ -160,6 +161,7 @@ class ElementController extends MGCController {
 
         return $this->render('JspAdminBundle:Element:edit.html.twig', array(
             'element' => $element,
+            'elementDto' => $elementDto,
             'form' => $form->createView(),
         ));
 
@@ -169,14 +171,35 @@ class ElementController extends MGCController {
      * @Route("/jsp/elements/delete/{id}", requirements={"id": "\d+"},  name="jsp_admin_elements_delete")
      */
     public function deleteAction($id) {
+        $this->elementService = $this->get('jsp.admin.service.element');
+        $element = $this->getDoctrine()->getRepository('JspCoreBundle:Element')->find($id);
 
+        if (!empty($element) && !empty($element->getId())) {
+            $this->elementService->deleteElement($element);
+            $this->addFlash('success', "Element #{$id} deleted!");
+        } else {
+            $this->addFlash('error', "Element #{$id} can't be deleted!");
+        }
+
+        return $this->redirectToRoute('jsp_admin_elements');
     }
 
     /**
      * @Route("/jsp/elements/stop/{id}", requirements={"id": "\d+"},  name="jsp_admin_elements_stop")
      */
     public function stopAction($id) {
+        $this->elementService = $this->get('jsp.admin.service.element');
+        $element = $this->getDoctrine()->getRepository('JspCoreBundle:Element')->find($id);
 
+        if (!empty($element) && !empty($element->getId())) {
+            $element->setState('stopped');
+            $this->elementService->updateElement($element);
+            $this->addFlash('success', "Element #{$id} stopped!");
+        } else {
+            $this->addFlash('error', "Element #{$id} can't be stopped!");
+        }
+
+        return $this->redirectToRoute('jsp_admin_elements');
     }
 
 }
