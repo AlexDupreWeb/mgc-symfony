@@ -5,6 +5,7 @@ namespace JSP\AdminBundle\Services;
 use Doctrine\ORM\EntityManager;
 use JSP\AdminBundle\Dto\Element\ElementForm;
 use JSP\AdminBundle\Services\Mappers\ElementMapper;
+use JSP\CoreBundle\Entity\Element;
 
 class ElementService {
 
@@ -60,6 +61,15 @@ class ElementService {
         return $element;
     }
 
+    public function updateElement(Element $element) {
+        $now = new \DateTime();
+
+        $element->setDateUpdated($now);
+
+        $this->em->merge($element);
+        $this->em->flush();
+    }
+
     public function updateElementWithFormDto(ElementForm $elementForm) {
         $element = $this->elementMapper->DtoFormToEntity($elementForm);
 
@@ -67,7 +77,7 @@ class ElementService {
 
         $element->setDateUpdated($now);
 
-        $this->em->persist($element);
+        $this->em->merge($element);
         $this->em->flush();
     }
 
