@@ -59,6 +59,11 @@ class Element {
     private $conditionState;
 
     /**
+     * @var ConfigurationState[]
+     */
+    private $configurationStates;
+
+    /**
      * @return int
      */
     public function getId() {
@@ -231,6 +236,43 @@ class Element {
      */
     public function setConditionState($conditionState) {
         $this->conditionState = $conditionState;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfigurationStates() {
+        return $this->configurationStates;
+    }
+
+    /**
+     * @return ConfigurationState
+     */
+    public function getConfigurationStateByName($name) {
+        foreach ($this->configurationStates as $configurationState) {
+            if ($configurationState->getName() == $name) {
+                return $configurationState;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @param mixed $configurationState
+     * @return Element
+     */
+    public function setConfigurationStates($configurationStates) {
+        $this->configurationStates = $configurationStates;
+        return $this;
+    }
+
+    /**
+     * @param mixed $configurationState
+     * @return Element
+     */
+    public function addConfigurationState($configurationState) {
+        array_push($this->configurationStates, $configurationState);
         return $this;
     }
 

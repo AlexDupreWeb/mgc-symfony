@@ -51,13 +51,18 @@ class TimerState {
                 $this->remaining_seconds = $this->total_seconds;
             }
 
-            $this->percent = ( 1 - $this->remaining_seconds / $this->total_seconds ) * 100;
+            if($this->total_seconds == 0) {
+                $this->percent = 0;
+            } else {
+                $this->percent = ( 1 - $this->remaining_seconds / $this->total_seconds ) * 100;
 
-            if ($this->percent > 100) {
-                $this->percent = 100;
+                if ($this->percent > 100) {
+                    $this->percent = 100;
+                }
+
+                $this->percent = floor($this->percent);
             }
 
-            $this->percent = floor($this->percent);
         }
 
     }
