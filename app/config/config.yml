@@ -73,3 +73,8 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+jms_serializer:
+    property_naming:
+        separator:  _
+        lower_case: true
