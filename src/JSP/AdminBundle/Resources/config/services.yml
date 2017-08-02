@@ -12,6 +12,7 @@ services:
         class: JSP\AdminBundle\Services\ElementService
         arguments:
           - '@doctrine.orm.entity_manager'
+          - '@jms_serializer'
           - '@jsp.admin.mapper.element'
 
     jsp.admin.mapper.element:
@@ -26,3 +27,12 @@ services:
           - '@service_container'
         tags:
           - { name: twig.extension }
+
+    jsp.admin.service.form_builder.element:
+        class: JSP\AdminBundle\Services\FormBuilder\ElementService
+        arguments:
+          - '@form.factory'
+          - '@service_container'
+          - '@translator'
+          - '%kernel.root_dir%'
+          - '%locale%'
