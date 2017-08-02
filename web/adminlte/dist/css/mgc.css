@@ -29,6 +29,13 @@
     background: #dedede;
 }
 
+.color-picker-preview{
+    display: inline-block;
+    height: 16px;
+    vertical-align: text-top;
+    width: 16px;
+}
+
 /* ===== =====
     Raccourcis CSS
 ===== ===== */
@@ -60,8 +67,19 @@
 .box.box-solid.box-black {
     border: 1px solid #111;
 }
+.box.box-solid.box-black > .box-header a{
+    color: #fff;
+}
 .box.box-solid.box-black > .box-header .btn-box-tool{
     color: #fff;
+}
+
+.box-header.with-border {
+    border-bottom: 0;
+}
+
+.box-group .box{
+    margin-bottom: 5px;
 }
 
 .btn-black{
@@ -83,6 +101,16 @@
 .info-box-icon > img {
     max-height: 70px;
     vertical-align: -20px;
+}
+
+
+.info-box.bg-gray {
+    background-color: #a9a9a9 !important;
+    color: #fff;
+}
+.info-box.bg-black {
+    background-color: #333 !important;
+    color: #fff;
 }
 
 .home-thumbnail > img{

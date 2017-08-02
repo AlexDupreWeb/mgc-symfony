@@ -1,0 +1,13 @@
+<div class="info-box {{ boxColor }}">
+    <span class="info-box-icon"><i class="fa {{ boxIcon }}"></i></span>
+
+    <div class="info-box-content">
+        <span class="info-box-text">{{ boxText|trans({}, "messages", app.request.locale)|capitalize }}</span>
+        <span class="info-box-number">{{ boxNumber }}</span>
+
+        <div class="progress">
+            <div class="progress-bar" style="width: {{ progressBarValue }}%"></div>
+        </div>
+        <span class="progress-description">{{ progressBarDescription }}</span>
+    </div>
+</div>

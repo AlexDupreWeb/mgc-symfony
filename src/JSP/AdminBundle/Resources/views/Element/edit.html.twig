@@ -36,66 +36,516 @@
                 </div>
             </div>
 
-            {{ form_start(form) }}
+            {{ dump(_context) }}
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
+                    <div class="nav-tabs-custom">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab_one" data-toggle="tab"><i class="fa fa-cog"></i> Réglages</a></li>
+                            <li><a href="#tab_two" data-toggle="tab"><i class="fa fa-paint-brush"></i> Graphisme</a></li>
+                            <li><a href="#tab_three" data-toggle="tab"><i class="fa fa-pie-chart"></i> Statistiques</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tab_one">
+                                <div class="row">
+                                    <div class="col-md-4">
 
-                    <div class="box box-black">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Add an Element</h3>
-                        </div>
-                        <div class="box-body">
+                                        {{ form_start(form) }}
 
-                            <div class="form-group">
-                                {{ form_label(form.name) }}
-                                {{ form_errors(form.name) }}
-                                {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
+                                        <input type="hidden" name="action" value="default">
 
-                            <div class="form-group">
-                                {{ form_label(form.state) }}
-                                {{ form_errors(form.state) }}
-                                {{ form_widget(form.state, { 'attr': {'class': 'form-control'} }) }}
-                            </div>
+                                        <div class="form-group">
+                                            {{ form_label(form.name) }}
+                                            {{ form_errors(form.name) }}
+                                            {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+                                        </div>
 
-                            <div class="form-group">
-                                {{ form_label(form.date_begin) }}
-                                {{ form_errors(form.date_begin) }}
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    {{ form_widget(form.date_begin, { 'attr': {'class': 'form-control datetimepicker'} }) }}
+                                        <div class="form-group">
+                                            {{ form_label(form.state) }}
+                                            {{ form_errors(form.state) }}
+                                            {{ form_widget(form.state, { 'attr': {'class': 'form-control'} }) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            {{ form_label(form.date_begin) }}
+                                            {{ form_errors(form.date_begin) }}
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                {{ form_widget(form.date_begin, { 'attr': {'class': 'form-control datetimepicker'} }) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            {{ form_label(form.date_end) }}
+                                            {{ form_errors(form.date_end) }}
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                {{ form_widget(form.date_end, { 'attr': {'class': 'form-control datetimepicker'} }) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="checkbox">
+                                            <label>
+                                                {{ form_widget(form.active, { 'attr': {'class': ''} }) }} {{ form_label(form.active)|striptags }}
+                                            </label>
+                                        </div>
+
+                                        <div class="text-center">
+                                            {{ form_widget(form.save, { 'attr': {'class': 'btn btn-primary'} }) }}
+                                        </div>
+
+                                        {{ form_end(form) }}
+
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+
+                                        {{ jspBootstrapInfoBox(elementDto)|raw }}
+
+                                        {{ jspBootstrapInfoBoxProgressBar(elementDto, 'settings', 'bg-black', 'fa-cog')|raw }}
+                                        {{ jspBootstrapInfoBoxProgressBar(elementDto, 'design', 'bg-black', 'fa-paint-brush')|raw }}
+                                        {{ jspBootstrapInfoBoxProgressBar(elementDto, 'stats', 'bg-black', 'fa-pie-chart')|raw }}
+
+                                    </div>
                                 </div>
                             </div>
+                            <div class="tab-pane" id="tab_two">
 
-                            <div class="form-group">
-                                {{ form_label(form.date_end) }}
-                                {{ form_errors(form.date_end) }}
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                    {{ form_widget(form.date_end, { 'attr': {'class': 'form-control datetimepicker'} }) }}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="box-group">
+
+                                            <div class="panel box box-black box-solid">
+                                                <div class="box-header with-border">
+                                                    <h4 class="box-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                                            Popin
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseOne" class="panel-collapse collapse {% if whatFormToDisplay == 'popin' %}in{% endif %}">
+                                                    <div class="box-body">
+                                                        {{ form_start(form_popin) }}
+
+                                                        <input type="hidden" name="action" value="design">
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.background_color) }}
+                                                                    {{ form_errors(form_popin.background_color) }}
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <span class="color-picker-preview" style="background-color: rgb(109, 48, 48);"></span>
+                                                                        </div>
+
+                                                                        {{ form_widget(form_popin.background_color, { 'attr': {'class': 'form-control colorpicker'} }) }}
+
+                                                                        <span class="input-group-btn">
+                                                                        <button type="button" class="btn btn-flat btn-black" onclick="javascript:alert('coucou');">
+                                                                            <i class="fa fa-eyedropper"></i>
+                                                                        </button>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.height) }}
+                                                                    {{ form_errors(form_popin.height) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_popin.height, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.width) }}
+                                                                    {{ form_errors(form_popin.width) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_popin.width, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            {{ form_label(form_popin.close_button_background_image) }}
+                                                            {{ form_errors(form_popin.close_button_background_image) }}
+                                                            <div class="input-group">
+                                                                {{ form_widget(form_popin.close_button_background_image, { 'attr': {'class': 'form-control'} }) }}
+
+                                                                <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-flat btn-black" onclick="javascript:alert('coucou');">
+                                                                    <i class="fa fa-picture-o"></i>
+                                                                </button>
+                                                            </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.close_button_background_position) }}
+                                                                    {{ form_errors(form_popin.close_button_background_position) }}
+                                                                    {{ form_widget(form_popin.close_button_background_position, { 'attr': {'class': 'form-control'} }) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.close_button_background_repeat) }}
+                                                                    {{ form_errors(form_popin.close_button_background_repeat) }}
+                                                                    {{ form_widget(form_popin.close_button_background_repeat, { 'attr': {'class': 'form-control'} }) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.close_button_cursor) }}
+                                                                    {{ form_errors(form_popin.close_button_cursor) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_popin.close_button_cursor, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">
+                                                                        <i class="fa fa-mouse-pointer"></i>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.close_button_height) }}
+                                                                    {{ form_errors(form_popin.close_button_height) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_popin.close_button_height, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.close_button_width) }}
+                                                                    {{ form_errors(form_popin.close_button_width) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_popin.close_button_width, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.close_button_margin_top) }}
+                                                                    {{ form_errors(form_popin.close_button_margin_top) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_popin.close_button_margin_top, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_popin.close_button_margin_right) }}
+                                                                    {{ form_errors(form_popin.close_button_margin_right) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_popin.close_button_margin_right, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="text-center">
+                                                            {{ form_widget(form_popin.save, { 'attr': {'class': 'btn btn-primary'} }) }}
+                                                        </div>
+
+                                                        {{ form_end(form_popin) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel box box-black box-solid">
+                                                <div class="box-header with-border">
+                                                    <h4 class="box-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                            Bottom Bar
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseTwo" class="panel-collapse collapse {% if whatFormToDisplay == 'bottombar' %}in{% endif %}">
+                                                    <div class="box-body">
+                                                        {{ form_start(form_bottombar) }}
+
+                                                        <input type="hidden" name="action" value="design">
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.background_color) }}
+                                                                    {{ form_errors(form_bottombar.background_color) }}
+                                                                    <div class="input-group">
+                                                                        <div class="input-group-addon">
+                                                                            <span class="color-picker-preview" style="background-color: rgb(109, 48, 48);"></span>
+                                                                        </div>
+
+                                                                        {{ form_widget(form_bottombar.background_color, { 'attr': {'class': 'form-control colorpicker'} }) }}
+
+                                                                        <span class="input-group-btn">
+                                                                        <button type="button" class="btn btn-flat btn-black" onclick="javascript:alert('coucou');">
+                                                                            <i class="fa fa-eyedropper"></i>
+                                                                        </button>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.text_align) }}
+                                                                    {{ form_errors(form_bottombar.text_align) }}
+                                                                    {{ form_widget(form_bottombar.text_align, { 'attr': {'class': 'form-control'} }) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.height) }}
+                                                                    {{ form_errors(form_bottombar.height) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.height, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.width) }}
+                                                                    {{ form_errors(form_bottombar.width) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.width, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            {{ form_label(form_bottombar.open_button_background_image) }}
+                                                            {{ form_errors(form_bottombar.open_button_background_image) }}
+                                                            <div class="input-group">
+                                                                {{ form_widget(form_bottombar.open_button_background_image, { 'attr': {'class': 'form-control'} }) }}
+
+                                                                <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-flat btn-black" onclick="javascript:alert('coucou');">
+                                                                    <i class="fa fa-picture-o"></i>
+                                                                </button>
+                                                            </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.open_button_background_position) }}
+                                                                    {{ form_errors(form_bottombar.open_button_background_position) }}
+                                                                    {{ form_widget(form_bottombar.open_button_background_position, { 'attr': {'class': 'form-control'} }) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.open_button_background_repeat) }}
+                                                                    {{ form_errors(form_bottombar.open_button_background_repeat) }}
+                                                                    {{ form_widget(form_bottombar.open_button_background_repeat, { 'attr': {'class': 'form-control'} }) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.open_button_cursor) }}
+                                                                    {{ form_errors(form_bottombar.open_button_cursor) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.open_button_cursor, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">
+                                                                        <i class="fa fa-mouse-pointer"></i>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.open_button_height) }}
+                                                                    {{ form_errors(form_bottombar.open_button_height) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.open_button_height, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.open_button_width) }}
+                                                                    {{ form_errors(form_bottombar.open_button_width) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.open_button_width, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.open_button_margin_top) }}
+                                                                    {{ form_errors(form_bottombar.open_button_margin_top) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.open_button_margin_top, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.open_button_margin_right) }}
+                                                                    {{ form_errors(form_bottombar.open_button_margin_right) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.open_button_margin_right, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            {{ form_label(form_bottombar.close_button_background_image) }}
+                                                            {{ form_errors(form_bottombar.close_button_background_image) }}
+                                                            <div class="input-group">
+                                                                {{ form_widget(form_bottombar.close_button_background_image, { 'attr': {'class': 'form-control'} }) }}
+
+                                                                <span class="input-group-btn">
+                                                                <button type="button" class="btn btn-flat btn-black" onclick="javascript:alert('coucou');">
+                                                                    <i class="fa fa-picture-o"></i>
+                                                                </button>
+                                                            </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.close_button_background_position) }}
+                                                                    {{ form_errors(form_bottombar.close_button_background_position) }}
+                                                                    {{ form_widget(form_bottombar.close_button_background_position, { 'attr': {'class': 'form-control'} }) }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.close_button_background_repeat) }}
+                                                                    {{ form_errors(form_bottombar.close_button_background_repeat) }}
+                                                                    {{ form_widget(form_bottombar.close_button_background_repeat, { 'attr': {'class': 'form-control'} }) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.close_button_cursor) }}
+                                                                    {{ form_errors(form_bottombar.close_button_cursor) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.close_button_cursor, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">
+                                                                        <i class="fa fa-mouse-pointer"></i>
+                                                                    </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.close_button_height) }}
+                                                                    {{ form_errors(form_bottombar.close_button_height) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.close_button_height, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.close_button_width) }}
+                                                                    {{ form_errors(form_bottombar.close_button_width) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.close_button_width, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.close_button_margin_top) }}
+                                                                    {{ form_errors(form_bottombar.close_button_margin_top) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.close_button_margin_top, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    {{ form_label(form_bottombar.close_button_margin_right) }}
+                                                                    {{ form_errors(form_bottombar.close_button_margin_right) }}
+                                                                    <div class="input-group">
+                                                                        {{ form_widget(form_bottombar.close_button_margin_right, { 'attr': {'class': 'form-control'} }) }}
+                                                                        <span class="input-group-addon">px</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="text-center">
+                                                            {{ form_widget(form_bottombar.save, { 'attr': {'class': 'btn btn-primary'} }) }}
+                                                        </div>
+
+                                                        {{ form_end(form_bottombar) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
+
                             </div>
-
-                            <div class="checkbox">
-                                <label>
-                                    {{ form_widget(form.active, { 'attr': {'class': ''} }) }} {{ form_label(form.active)|striptags }}
-                                </label>
+                            <div class="tab-pane" id="tab_three">
+                                aaaaa
                             </div>
-
-
-
-                            <div class="text-center">
-                                {{ form_widget(form.save, { 'attr': {'class': 'btn btn-primary'} }) }}
-                            </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
-
-            {{ form_end(form) }}
 
         </section>
     </div>
@@ -140,6 +590,11 @@
                 showClose: true,
             });
 
+
         });
+
+        function updateColorPicker(id) {
+
+        }
     </script>
 {% endblock %}
