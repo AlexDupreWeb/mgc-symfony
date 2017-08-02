@@ -114,48 +114,55 @@ class ElementController extends MGCController {
      * @Route("/jsp/elements/edit/{id}", requirements={"id": "\d+"},  name="jsp_admin_elements_edit")
      */
     public function editAction($id, Request $request) {
+
         $this->elementService = $this->get('jsp.admin.service.element');
         $this->elementMapper = $this->get('jsp.admin.mapper.element');
+        $formService = $this->get('jsp.admin.service.form_builder.element');
 
         $element = $this->getDoctrine()->getRepository('JspCoreBundle:Element')->find($id);
         $elementDto = $this->elementMapper->entityToDto($element);
         $elementForm = $this->elementMapper->entityToDtoForm($element);
 
+        $designObject = $this->elementService->deserializeJsonFromElementDataToObject($element->getData());
 
-        $kernel = $this->container->get('kernel');
-        $yamlPath = $kernel->locateResource('@JspAdminBundle/Resources/data/elements.yml');
-        $yamlContent = Yaml::parse(file_get_contents($yamlPath));
-        $yamlStates = $yamlContent['states'];
+        $form = $formService->createElementFormBuilder($elementForm);
+        $popinObject = $bottomBarObject = $whatFormToDisplay = null;
 
-        $states_options = array();
-        foreach ($yamlStates as $key => $value) {
-            $states_options[$value] = ucfirst( $this->get('translator')->trans("mgc.global.{$value}", array(), 'messages', $request->getLocale()) );
+        if(!empty($designObject) && $designObject::getClass() == 'Popin') {
+            $popinObject = $designObject;
+            $whatFormToDisplay = 'popin';
+        } elseif(!empty($designObject) && $designObject::getClass() == 'BottomBar') {
+            $bottomBarObject = $designObject;
+            $whatFormToDisplay = 'bottombar';
         }
-        $states_options = array_flip($states_options);
 
-        $form = $this->createFormBuilder($elementForm)
-            ->add('name', TextType::class, array('label' => "Update element"))
-            ->add('date_begin', TextType::class, array('label' => "Update element"))
-            ->add('date_end', TextType::class, array('label' => "Update element"))
-            ->add('state', ChoiceType::class, array(
-                'label' => "Update element",
-                'placeholder' => false,
-                'choices' => $states_options
-            ))
-            ->add('active', CheckboxType::class, array(
-                'label' => "Update element",
-                'required' => false
-            ))
-            ->add('save', SubmitType::class, array('label' => "Update element"))
-            ->getForm();
+        $formPopin = $formService->createElementPopinFormBuilder($popinObject);
+        $formBottomBar = $formService->createElementBottomBarFormBuilder($bottomBarObject);
 
         if ($request->isMethod('POST')) {
-            $form->submit($request->request->get($form->getName()));
 
-            if ($form->isSubmitted() && $form->isValid()) {
-                $this->elementService->updateElementWithFormDto($form->getData());
+            if($request->request->get('action') == "default") {
 
-                return $this->redirectToRoute('jsp_admin_elements_edit', array('id' => $element->getId()));
+                $form->submit($request->request->get($form->getName()));
+
+                if ($form->isSubmitted() && $form->isValid()) {
+                    $this->elementService->updateElementWithFormDto($form->getData());
+
+                    return $this->redirectToRoute('jsp_admin_elements_edit', array('id' => $element->getId()));
+                }
+
+            } elseif($request->request->get('action') == "design") {
+
+                if(!empty($request->request->get('popin'))) {
+                    $popin = $this->elementMapper->arrayToPopinDto($request->request->get('popin'));
+                    $json = $this->elementService->serializeToJson($popin);
+                    $this->elementService->updateElementData($element, 'popin', $json);
+                } elseif(!empty($request->request->get('bottombar'))) {
+                    $bottombar = $this->elementMapper->arrayToBottomBarDto($request->request->get('bottombar'));
+                    $json = $this->elementService->serializeToJson($bottombar);
+                    $this->elementService->updateElementData($element, 'bottombar', $json);
+                }
+
             }
         }
 
@@ -163,6 +170,10 @@ class ElementController extends MGCController {
             'element' => $element,
             'elementDto' => $elementDto,
             'form' => $form->createView(),
+            'form_popin' => $formPopin->createView(),
+            'form_bottombar' => $formBottomBar->createView(),
+
+            'whatFormToDisplay' => $whatFormToDisplay
         ));
 
     }
