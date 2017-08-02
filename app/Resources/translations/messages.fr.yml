@@ -10,6 +10,7 @@ mgc:
     administration: "administration"
     dashboard: "tableau de bord"
     delete: "supprimer"
+    design: "graphisme"
     edit: "modifier"
     help: "aide"
     home: "accueil"
@@ -21,6 +22,7 @@ mgc:
     settings: "paramètres"
     sign_out: "déconnexion"
     shortcuts: "raccourcis"
+    stats: "statistiques"
     stop: "arrêter"
     unknown: "inconnu"
 

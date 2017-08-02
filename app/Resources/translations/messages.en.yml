@@ -10,6 +10,7 @@ mgc:
     administration: "administration"
     dashboard: "dashboard"
     delete: "delete"
+    design: "design"
     edit: "edit"
     help: "help"
     home: "home"
@@ -21,6 +22,7 @@ mgc:
     settings: "settings"
     sign_out: "sign out"
     shortcuts: "shortcuts"
+    stats: "stats"
     stop: "stop"
     unknown: "unknown"
 
