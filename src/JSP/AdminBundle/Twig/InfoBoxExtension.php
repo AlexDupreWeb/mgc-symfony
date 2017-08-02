@@ -25,7 +25,10 @@ class InfoBoxExtension extends \Twig_Extension {
      * @return array
      */
     public function getFunctions() {
-        return array(new \Twig_SimpleFunction('jspBootstrapInfoBox', array($this, 'getBootstrapInfoBox')));
+        return array(
+            new \Twig_SimpleFunction('jspBootstrapInfoBox', array($this, 'getBootstrapInfoBox')),
+            new \Twig_SimpleFunction('jspBootstrapInfoBoxProgressBar', array($this, 'getBootstrapInfoBoxProgressBar')),
+        );
     }
 
     /**
@@ -37,12 +40,15 @@ class InfoBoxExtension extends \Twig_Extension {
 
     public function getBootstrapInfoBox(Element $element) {
 
-        if ($element->getConditionState()->getCurrentState() == 'ongoing') {
-            $boxColor = 'bg-green';
-            $boxIcon = 'fa-play-circle-o';
+        if ($element->getConditionState()->getCurrentState() == 'draft') {
+            $boxColor = 'bg-gray';
+            $boxIcon = 'fa-pencil';
         } elseif ($element->getConditionState()->getCurrentState() == 'scheduled') {
             $boxColor = 'bg-green';
             $boxIcon = 'fa-clock-o';
+        } elseif ($element->getConditionState()->getCurrentState() == 'ongoing') {
+            $boxColor = 'bg-green';
+            $boxIcon = 'fa-play-circle-o';
         } elseif ($element->getConditionState()->getCurrentState() == 'stopped') {
             $boxColor = 'bg-yellow';
             $boxIcon = 'fa-pause-circle-o';
@@ -61,6 +67,34 @@ class InfoBoxExtension extends \Twig_Extension {
         ));
 
         return $html;
+    }
+
+    public function getBootstrapInfoBoxProgressBar(Element $element, $type='' , $color='', $icon='') {
+        $configurationState = $element->getConfigurationStateByName($type);
+
+        $boxColor = $color;
+        $boxIcon = $icon;
+
+        if (!empty($configurationState)) {
+            $boxNumber = $configurationState->getPercent().'%';
+            $boxText = $configurationState->getTranslationCode();
+            $progressBarValue = $configurationState->getPercent();
+            $progressBarDescription = $configurationState->getComment();
+
+            $html = $this->twig->render('JspAdminBundle:Bootstrap:infoboxprogressbar.html.twig', array(
+                'element' => $element,
+                'boxColor' => $boxColor,
+                'boxIcon' => $boxIcon,
+                'boxNumber' => $boxNumber,
+                'boxText' => $boxText,
+                'progressBarValue' => $progressBarValue,
+                'progressBarDescription' => $progressBarDescription,
+            ));
+
+            return $html;
+        }
+
+        return null;
     }
 
 }
