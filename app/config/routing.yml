@@ -1,3 +1,8 @@
+time_tracking:
+    resource: "@TimeTrackingBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
