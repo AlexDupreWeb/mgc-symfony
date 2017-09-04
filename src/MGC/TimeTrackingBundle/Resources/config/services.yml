@@ -2,3 +2,11 @@ services:
 #    time_tracking.example:
 #        class: MGC\TimeTrackingBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+    time_tracking.service.full_calendar.event:
+        class: MGC\TimeTrackingBundle\Services\FullCalendar\EventService
+        arguments:
+          - '@jms_serializer'
+
+    time_tracking.mapper.full_calendar.event:
+        class: MGC\TimeTrackingBundle\Services\Mappers\FullCalendar\EventMapper
