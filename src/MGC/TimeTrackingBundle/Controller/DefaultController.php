@@ -2,7 +2,11 @@
 
 namespace MGC\TimeTrackingBundle\Controller;
 
+use JMS\Serializer\Serializer;
 use MGC\CoreBundle\Controller\MGCController;
+use MGC\TimeTrackingBundle\Dto\FullCalendar\Event;
+use MGC\TimeTrackingBundle\Services\FullCalendar\EventService;
+use MGC\TimeTrackingBundle\Services\Mappers\FullCalendar\EventMapper;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -47,6 +51,44 @@ class DefaultController extends MGCController {
             'daily_report' => $daily_report,
         ]);
 
+    }
+
+    /**
+     * @Route("/time-tracking/calendar")
+     */
+    public function calendarAction() {
+
+        /**
+         * @var EventService $eventService
+         */
+        $eventService = $this->get('time_tracking.service.full_calendar.event');
+        /**
+         * @var EventMapper $eventMapper
+         */
+        $eventMapper = $this->get('time_tracking.mapper.full_calendar.event');
+
+        $event = new Event();
+        $event
+            ->setTitle('test')
+            ->setStart(new \DateTime());
+
+        $tasks = $this->getDoctrine()->getRepository('TimeTrackingBundle:Task')
+            ->findBy([], ['date' => 'desc']);
+
+        $array = [];
+        foreach ($tasks as $task) {
+            $array[] = $eventMapper->entityToDto($task);
+        }
+
+        //$json = $eventService->serializeItemsToJson($array);
+        $json = $eventService->serializeToJson($array);
+
+
+        //dump($json);die;
+
+        return $this->render('TimeTrackingBundle:Default:calendar.html.twig', [
+            'json' => $json
+        ]);
     }
 
 }

@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                Page Header
+                <small>Optional description</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                <li class="active">Here</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Your Page Content Here -->
+            Calendar
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="box box-primary">
+                        <div class="box-body no-padding">
+                            <div id="calendar" class="">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+    </div>
+{% endblock %}
+
+{%  block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.0/fullcalendar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.0/fullcalendar.print.css" media="print">
+    <style>
+        .fc .fc-day-top.fc-today{
+            background-color: #333333 !important;
+        }
+        .fc .fc-day.fc-today{
+            background-color: #f4f4f4 !important;
+        }
+
+        .fc .fc-head-container .fc-week-number,
+        .fc .fc-head-container .fc-week-number a,
+        .fc .fc-head-container .fc-day-header,
+        .fc .fc-head-container .fc-day-header a{
+            background-color: #333333 !important;
+            border: 1px solid #000;
+            color: #ffffff !important;
+        }
+    </style>
+{% endblock %}
+
+{%  block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.0/fullcalendar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.0/locale-all.js"></script>
+    <script>
+        $('#calendar').fullCalendar({
+            schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+            header: {
+                left: 'prev,next,today,prevYear,nextYear',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay,listWeek'
+            },
+            buttonText: {
+                today: 'auj',
+                month: 'mois',
+                week: 'semaine',
+                day: 'jour',
+                list: 'liste',
+
+                prev: '<',
+                next: '>',
+                prevYear: '<<',
+                nextYear: '>>'
+            },
+            bootstrapGlyphicons: {
+
+                close: 'glyphicon-remove',
+                prev: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                prevYear: 'glyphicon-backward',
+                nextYear: 'glyphicon-forward'
+
+            },
+            defaultDate: '2017-09-12',
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            weekNumbers: true,
+            locale: 'fr',
+            theme: 'bootstrap3',
+            events: {{ json|raw }}
+        });
+        $(".fc-prev-button").html('<i class="fa fa-chevron-left"></i>');
+        $(".fc-next-button").html('<i class="fa fa-chevron-right"></i>');
+        $(".fc-prevYear-button").html('<i class="fa fa-arrow-left"></i>');
+        $(".fc-nextYear-button").html('<i class="fa fa-arrow-right"></i>');
+    </script>
+{% endblock %}
