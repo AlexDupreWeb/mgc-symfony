@@ -13,10 +13,66 @@
             </ol>
         </section>
 
-        <!-- Main content -->
         <section class="content">
 
-            <!-- Your Page Content Here -->
+            <div class="row">
+                <div class="col-md-4">
+
+                    {% if projects|length > 0 %}
+                        <div class="list-group">
+                            {% for project in projects %}
+                                <a href="#" class="list-group-item">
+                                    <span class="badge" style="background-color: {{ project.getColor() }}">&nbsp;</span>
+                                    {{ project.getName() }}
+                                </a>
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        <div class="alert alert-info">
+                            Aucun projet à afficher
+                        </div>
+                    {% endif %}
+
+                </div>
+                <div class="col-md-4">
+                    {% if daily_report|length > 0 %}
+                        <ul class="list-group">
+                            {% for report in daily_report %}
+                                <li class="list-group-item">
+                                    <span class="badge bg-{{ report.color }}">{{ report.executionTime }}</span>
+                                    <span class="label label-default">{{ report.date|date('d/m/Y') }}</span>
+                                </li>
+                            {% endfor %}
+                        </ul>
+
+                    {% else %}
+                        <div class="alert alert-info">
+                            Aucune donnée
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-4">
+
+                    {% if tasks|length > 0 %}
+                        <div class="list-group">
+                            {% for task in tasks %}
+                                <a href="#" class="list-group-item">
+                                    <span class="badge bg-black">{{ task.getExecutionTime() }}</span>
+                                    <span class="label label-default">{{ task.getDate()|date('d/m/Y') }}</span>
+                                    {{ task.getName() }}
+                                </a>
+                            {% endfor %}
+                        </div>
+
+                    {% else %}
+                        <div class="alert alert-info">
+                            Aucune tache à afficher
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
 
         </section>
     </div>
