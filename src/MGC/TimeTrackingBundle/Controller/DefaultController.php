@@ -4,6 +4,7 @@ namespace MGC\TimeTrackingBundle\Controller;
 
 use JMS\Serializer\Serializer;
 use MGC\CoreBundle\Controller\MGCController;
+use MGC\TimeTrackingBundle\Dto\FullCalendar\Calendar;
 use MGC\TimeTrackingBundle\Dto\FullCalendar\Event;
 use MGC\TimeTrackingBundle\Services\FullCalendar\EventService;
 use MGC\TimeTrackingBundle\Services\Mappers\FullCalendar\EventMapper;
@@ -54,14 +55,14 @@ class DefaultController extends MGCController {
     }
 
     /**
-     * @Route("/time-tracking/calendar")
+     * @Route("/time-tracking/calendar", name="time-tracking-calendar")
      */
     public function calendarAction() {
-
         /**
          * @var EventService $eventService
          */
         $eventService = $this->get('time_tracking.service.full_calendar.event');
+
         /**
          * @var EventMapper $eventMapper
          */
@@ -80,11 +81,41 @@ class DefaultController extends MGCController {
             $array[] = $eventMapper->entityToDto($task);
         }
 
-        //$json = $eventService->serializeItemsToJson($array);
-        $json = $eventService->serializeToJson($array);
+        $calendar = new Calendar();
+        $calendar
+            ->setHeader([
+                Calendar::HEADER_POSITION_LEFT => Calendar::HEADER_BTN_PREV .','. Calendar::HEADER_BTN_TODAY .','. Calendar::HEADER_BTN_NEXT,
+                Calendar::HEADER_POSITION_CENTER => Calendar::HEADER_TEXT_TITLE,
+                Calendar::HEADER_POSITION_RIGHT => Calendar::HEADER_BTN_MONTH .','. Calendar::HEADER_BTN_WEEK .','. Calendar::HEADER_BTN_DAY
+            ])
+            ->setButtonText([
+                Calendar::BUTTON_TEXT_DAY => 'Jour',
+                Calendar::BUTTON_TEXT_LIST => 'Liste',
+                Calendar::BUTTON_TEXT_MONTH => 'Mois',
+                Calendar::BUTTON_TEXT_TODAY => "Aujourd'hui",
+                Calendar::BUTTON_TEXT_WEEK => 'Semaine',
+                Calendar::BUTTON_TEXT_NEXT => '>',
+                Calendar::BUTTON_TEXT_NEXTYEAR => '>>',
+                Calendar::BUTTON_TEXT_PREV => '<',
+                Calendar::BUTTON_TEXT_PREVYEAR => '<<'
+            ])
+            ->setBootstrapGlyphicons([
+                Calendar::BOOTSTRAP_GLYPHICONS_CLOSE => 'glyphicon-remove',
+                Calendar::BOOTSTRAP_GLYPHICONS_NEXT => 'fa fa-chevron-left',
+                Calendar::BOOTSTRAP_GLYPHICONS_NEXTYEAR => 'fa fa-chevron-right',
+                Calendar::BOOTSTRAP_GLYPHICONS_PREV => 'glyphicon-backward',
+                Calendar::BOOTSTRAP_GLYPHICONS_PREVYEAR => 'glyphicon-forward'
+            ])
+            ->setDefaultDate(new \DateTime())
+            ->setNavLinks(true)
+            ->setEditable(false)
+            ->setEventLimit(true)
+            ->setWeekNumbers(true)
+            ->setLocale('fr')
+            ->setTheme('bootstrap3')
+            ->setEvents($array);
 
-
-        //dump($json);die;
+        $json = $eventService->serializeToJson($calendar);
 
         return $this->render('TimeTrackingBundle:Default:calendar.html.twig', [
             'json' => $json

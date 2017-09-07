@@ -16,6 +16,7 @@ class EventMapper {
         $event = new Event();
         $event
             ->setTitle($task->getName())
+            ->setColor('#378006')
             ->setStart($task->getDate())
             //->setEnd($task->getDate())
         ;

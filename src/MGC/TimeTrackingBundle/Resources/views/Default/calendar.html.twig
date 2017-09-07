@@ -63,43 +63,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.0/fullcalendar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.5.0/locale-all.js"></script>
     <script>
-        $('#calendar').fullCalendar({
-            schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
-            header: {
-                left: 'prev,next,today,prevYear,nextYear',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay,listWeek'
-            },
-            buttonText: {
-                today: 'auj',
-                month: 'mois',
-                week: 'semaine',
-                day: 'jour',
-                list: 'liste',
+        $('#calendar').fullCalendar({{ json|raw }});
 
-                prev: '<',
-                next: '>',
-                prevYear: '<<',
-                nextYear: '>>'
-            },
-            bootstrapGlyphicons: {
-
-                close: 'glyphicon-remove',
-                prev: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                prevYear: 'glyphicon-backward',
-                nextYear: 'glyphicon-forward'
-
-            },
-            defaultDate: '2017-09-12',
-            navLinks: true, // can click day/week names to navigate views
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            weekNumbers: true,
-            locale: 'fr',
-            theme: 'bootstrap3',
-            events: {{ json|raw }}
-        });
         $(".fc-prev-button").html('<i class="fa fa-chevron-left"></i>');
         $(".fc-next-button").html('<i class="fa fa-chevron-right"></i>');
         $(".fc-prevYear-button").html('<i class="fa fa-arrow-left"></i>');
