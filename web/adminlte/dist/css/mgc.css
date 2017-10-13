@@ -64,6 +64,10 @@
     max-height: 70px;
     vertical-align: -20px;
 }
+.info-box-separator {
+    border: 1px solid #fff;
+    margin: 5px -10px;
+}
 
 .home-thumbnail > img{
     max-height: 75px;
