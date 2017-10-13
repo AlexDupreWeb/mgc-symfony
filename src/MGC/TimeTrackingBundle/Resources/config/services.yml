@@ -10,3 +10,8 @@ services:
 
     time_tracking.mapper.full_calendar.event:
         class: MGC\TimeTrackingBundle\Services\Mappers\FullCalendar\EventMapper
+
+    time_tracking.service.task:
+        class: MGC\TimeTrackingBundle\Services\TaskService
+        arguments:
+          - '@doctrine.orm.entity_manager'
