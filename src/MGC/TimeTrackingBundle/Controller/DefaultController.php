@@ -14,9 +14,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends MGCController {
 
     /**
-     * @Route("/time-tracking")
+     * @Route("/time-tracking", name="time_tracking")
      */
     public function indexAction() {
+
+        $nbProjects = $this->getDoctrine()->getRepository('TimeTrackingBundle:Project')->countAll();
+        $nbTags = $this->getDoctrine()->getRepository('TimeTrackingBundle:Tag')->countAll();
+        $nbTasks = $this->getDoctrine()->getRepository('TimeTrackingBundle:Task')->countAll();
 
         $projects = $this->getDoctrine()->getRepository('TimeTrackingBundle:Project')->findAll();
         $tasks = $this->getDoctrine()->getRepository('TimeTrackingBundle:Task')
@@ -50,6 +54,10 @@ class DefaultController extends MGCController {
             'projects' => $projects,
             'tasks' => $tasks,
             'daily_report' => $daily_report,
+
+            'nbProjects' => $nbProjects,
+            'nbTags' => $nbTags,
+            'nbTasks' => $nbTasks,
         ]);
 
     }

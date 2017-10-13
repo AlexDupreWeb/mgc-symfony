@@ -4,8 +4,8 @@
     <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                Time Tracking
+                <small>Gestionnaire de temps</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -14,6 +14,72 @@
         </section>
 
         <section class="content">
+
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-black"><i class="fa fa-folder"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Projets</span>
+                            <span class="info-box-number">{{ nbProjects }}</span>
+
+                            <hr class="info-box-separator">
+                            <span class="progress-description">
+                                <a href="{{ url('time-tracking-calendar') }}">Voir tous les projets</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-black"><i class="fa fa-tags"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Labels</span>
+                            <span class="info-box-number">{{ nbTags }}</span>
+
+                            <hr class="info-box-separator">
+                            <span class="progress-description">
+                                <a href="{{ url('time-tracking-calendar') }}">Voir tous les labels</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-black"><i class="fa fa-tasks"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Taches</span>
+                            <span class="info-box-number">{{ nbTasks }}</span>
+
+                            <hr class="info-box-separator">
+                            <span class="progress-description">
+                                <a href="{{ url('time-tracking-tasks') }}">Voir toutes les taches</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-black"><i class="fa fa-calendar"></i></span>
+
+                        <div class="info-box-content">
+                            <span class="info-box-text">Calendrier</span>
+                            <span class="info-box-number">{{ "now"|date("d/m/Y") }}</span>
+
+                            <div class="progress">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <span class="progress-description">
+                                <a href="{{ url('time-tracking-calendar') }}">Voir le calendrier</a>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-md-4">
