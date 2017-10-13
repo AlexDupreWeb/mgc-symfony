@@ -2,8 +2,11 @@ mgc:
   permissions:
     allow_access: "authorize access"
     is_admin: "is administrator"
+    can_update: "can update"
+    can_delete: "can delete"
 
   global:
+    add: "add"
     administration: "administration"
     dashboard: "dashboard"
     help: "help"
@@ -11,6 +14,7 @@ mgc:
     my_shortcuts: "my shortcuts"
     online: "online"
     profile: "profile"
+    return: "return"
     settings: "settings"
     sign_out: "sign out"
     shortcuts: "shortcuts"

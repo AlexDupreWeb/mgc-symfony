@@ -6,6 +6,7 @@ mgc:
     can_delete: "peut supprimer"
 
   global:
+    add: "ajouter"
     administration: "administration"
     dashboard: "tableau de bord"
     help: "aide"
@@ -13,6 +14,7 @@ mgc:
     my_shortcuts: "mes raccourcis"
     online: "connecté"
     profile: "profil"
+    return: "retour"
     settings: "paramètres"
     sign_out: "déconnexion"
     shortcuts: "raccourcis"
