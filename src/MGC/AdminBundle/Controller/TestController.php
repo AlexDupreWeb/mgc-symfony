@@ -14,8 +14,6 @@ class TestController extends MGCController
      */
     public function testPermissionAction()
     {
-        if(!is_null($this->redirect)){ return $this->redirect; }
-
         $test = $this->permissionService->loadBundlePermissions();
         dump($test);
 

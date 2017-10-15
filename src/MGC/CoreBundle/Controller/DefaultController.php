@@ -16,8 +16,6 @@ class DefaultController extends MGCController
      */
     public function indexAction(Request $request)
     {
-        if(!is_null($this->redirect)){ return $this->redirect; }
-
         // replace this example code with whatever you need
         return $this->render('default/index.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
@@ -29,8 +27,6 @@ class DefaultController extends MGCController
      */
     public function homeAction(Request $request)
     {
-        if(!is_null($this->redirect)){ return $this->redirect; }
-
         $request->setLocale('en');
         $request->setLocale('fr');
 

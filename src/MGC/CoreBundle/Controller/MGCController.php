@@ -23,16 +23,6 @@ class MGCController extends Controller
      */
     protected $usersAvatarService;
 
-    /**
-     * @var PermissionService
-     */
-    protected $permissionService;
-
-    /**
-     * @var string
-     */
-    protected $redirect;
-
     public function __construct() {}
 
     public function getIcon($name, $theme='default'){
@@ -76,10 +66,6 @@ class MGCController extends Controller
         $this->usersAvatarService = $this->get('mgc.admin.service.users.avatar');
         $this->usersAvatarService->setUserAvatarAssetsForUserSession();
 
-        $this->permissionService = $this->get('mgc.admin.service.permission');
-        
-        $this->redirect = $this->checkRedirect();
-        //$this->checkPermissions();
     }
 
     /**
@@ -112,28 +98,4 @@ class MGCController extends Controller
         return $response;
     }
 
-    private function checkRedirect(){
-        $router = $this->get('router');
-        //dump($router->getContext()); // RequestContext
-        //dump($router->getContext()->getPathInfo()); // /login
-        //dump($this->getUser()->getEmail()); // alexandre@alexandre-dupre.fr
-
-        $return = null;
-
-        if($this->getUser()) {
-            if($router->getContext()->getPathInfo() == '/login'){
-                $return =  $this->redirectToRoute('home');
-            }
-        }else{
-            if($router->getContext()->getPathInfo() != '/login'){
-                $return =  $this->redirectToRoute('login');
-            }
-        }
-
-        return $return;
-    }
-
-    private function checkPermissions(){
-
-    }
 }

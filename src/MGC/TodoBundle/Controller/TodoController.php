@@ -13,8 +13,6 @@ class TodoController extends MGCController
      */
     public function indexAction()
     {
-        if(!is_null($this->redirect)){ return $this->redirect; }
-
         return $this->render('TodoBundle:Todo:index.html.twig');
     }
 }

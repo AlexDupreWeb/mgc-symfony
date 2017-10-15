@@ -13,8 +13,6 @@ class SecurityController extends MGCController
      */
     public function loginAction(Request $request)
     {
-        if(!is_null($this->redirect)){ return $this->redirect; }
-        
         $authenticationUtils = $this->get('security.authentication_utils');
 
         // get the login error if there is one
