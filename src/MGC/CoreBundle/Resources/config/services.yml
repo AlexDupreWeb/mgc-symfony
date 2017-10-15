@@ -2,3 +2,11 @@ services:
 #    core.example:
 #        class: MGC\CoreBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+    mgc.admin.listener.permission:
+        class: MGC\CoreBundle\EventListener\AuthorizationListener
+        arguments:
+            - '@security.token_storage'
+            - '@router'
+        tags:
+            - { name: kernel.event_listener, event: kernel.response }
